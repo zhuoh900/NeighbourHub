@@ -77,6 +77,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .market-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .market-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .market-name { font-size: 15px; font-weight: 700; }
+
+.market-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+
 .market-price { font-size: 15px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
 
 /* ── EVENTS LIST ── */
@@ -150,6 +153,65 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .new-post-input::placeholder { color: var(--text-muted); }
 .new-post-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: var(--black); color: var(--white); padding: 10px 20px; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
 .new-post-btn:hover { background: #333; }
+
+/* ── DETAIL PAGES ── */
+.detail-page { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; overflow-y: auto; padding-top: 56px; }
+.detail-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 201; height: 56px; background: var(--white); border-bottom: var(--line); display: flex; align-items: center; padding: 0 40px; gap: 20px; }
+.detail-back { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; color: var(--text-muted); background: none; border: none; font-family: inherit; transition: color 0.15s; }
+.detail-back:hover { color: var(--black); }
+.detail-nav-title { font-size: 13px; font-weight: 700; }
+.detail-body { max-width: 720px; margin: 0 auto; padding: 48px 40px; }
+
+/* Marketplace detail */
+.detail-img { width: 100%; height: 360px; object-fit: cover; display: block; margin-bottom: 32px; }
+.detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.detail-title { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+.detail-price { font-size: 22px; font-weight: 700; }
+.detail-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin: 16px 0 24px; }
+.detail-seller { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-top: var(--line); border-bottom: var(--line); margin-bottom: 24px; }
+.detail-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.detail-seller-info { flex: 1; }
+.detail-seller-name { font-size: 13px; font-weight: 700; }
+.detail-seller-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; letter-spacing: 0.5px; }
+.detail-action { width: 100%; padding: 14px; font-size: 13px; font-weight: 700; font-family: inherit; letter-spacing: 1px; text-transform: uppercase; border: none; cursor: pointer; margin-bottom: 10px; transition: background 0.15s; }
+.detail-action-primary { background: var(--black); color: var(--white); }
+.detail-action-primary:hover { background: #333; }
+.detail-action-secondary { background: transparent; color: var(--black); border: var(--line); }
+.detail-action-secondary:hover { background: var(--gray); }
+
+/* Event detail */
+.detail-event-img { width: 100%; height: 300px; object-fit: cover; display: block; }
+.detail-event-date { font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin: 32px 0 4px; }
+.detail-event-month { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+.detail-attendees { margin: 24px 0; }
+.detail-attendees-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+.attendee-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: var(--line); }
+.attendee-row:last-child { border-bottom: none; }
+.attendee-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.attendee-unit { font-size: 13px; font-weight: 700; }
+
+/* Group detail */
+.detail-group-img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.detail-tabs { display: flex; border-bottom: var(--line); margin-bottom: 32px; }
+.detail-tab { padding: 14px 24px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; border-left: none; border-right: none; border-top: none; font-family: inherit; transition: all 0.15s; }
+.detail-tab.active { color: var(--black); border-bottom-color: var(--black); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Post detail */
+.post-detail-header { border-bottom: var(--line); padding-bottom: 24px; margin-bottom: 24px; }
+.post-detail-title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+.post-detail-meta { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+.reply-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: var(--line); }
+.reply-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.reply-body { flex: 1; }
+.reply-meta { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 4px; }
+.reply-text { font-size: 13px; line-height: 1.6; }
+.reply-box { display: flex; gap: 12px; margin-top: 24px; align-items: flex-start; }
+.reply-input { flex: 1; border: none; border-bottom: 2px solid var(--black); padding: 10px 0; font-family: inherit; font-size: 13px; background: transparent; outline: none; }
+.reply-input::placeholder { color: var(--text-muted); }
+.reply-send { font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: var(--black); color: var(--white); padding: 10px 20px; cursor: pointer; white-space: nowrap; }
+
 </style>
 </head>
 <body>
@@ -210,12 +272,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     <div class="market-grid">
       <!-- ═══ MARKETPLACE PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
       <!-- ═══ MARKETPLACE: 换掉下面每行 img src="..." 里的链接 ═══ -->
-      <div class="market-card"><div class="market-img"><img src="Sofa.jpeg" alt="Mid-century sofa"></div><div class="market-body"><div class="market-name">Mid-century sofa</div><div class="market-price">$280</div></div></div>
-      <div class="market-card"><div class="market-img"><img src="mountain_bike.jpg" alt="Mountain bike"></div><div class="market-body"><div class="market-name">Mountain bike</div><div class="market-price">$350</div></div></div>
-      <div class="market-card"><div class="market-img"><img src="design_book.jpg" alt="Design books"></div><div class="market-body"><div class="market-name">Design books bundle</div><div class="market-price">$40</div></div></div>
-      <div class="market-card"><div class="market-img"><img src="ninetendoswithch.jpg" alt="Nintendo Switch"></div><div class="market-body"><div class="market-name">Nintendo Switch</div><div class="market-price">$200</div></div></div>
-      <div class="market-card"><div class="market-img"><img src="plant.jpg" alt="Monstera plant"></div><div class="market-body"><div class="market-name">Monstera plant</div><div class="market-price">$45</div></div></div>
-      <div class="market-card"><div class="market-img"><img src="pot.jpg" alt="Le Creuset pot"></div><div class="market-body"><div class="market-name">Cast iron pot</div><div class="market-price">$120</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(0)" style="cursor:pointer;"><div class="market-img"><img src="Sofa.jpeg" alt="Mid-century sofa"></div><div class="market-body"><div class="market-name">Article Sven sofa, 73in</div><div class="market-price">$250</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(1)" style="cursor:pointer;"><div class="market-img"><img src="mountain_bike.jpg" alt="Mountain bike"></div><div class="market-body"><div class="market-name">Trek Marlin, barely ridden</div><div class="market-price">$320</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(2)" style="cursor:pointer;"><div class="market-img"><img src="design_book.jpg" alt="Design books"></div><div class="market-body"><div class="market-name">Design books, 8 titles</div><div class="market-price">$35</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(3)" style="cursor:pointer;"><div class="market-img"><img src="ninetendoswithch.jpg" alt="Nintendo Switch"></div><div class="market-body"><div class="market-name">Nintendo Switch + 4 games</div><div class="market-price">$180</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(4)" style="cursor:pointer;"><div class="market-img"><img src="plant.jpg" alt="Monstera plant"></div><div class="market-body"><div class="market-name">Monstera deliciosa, 3ft</div><div class="market-price">$40</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(5)" style="cursor:pointer;"><div class="market-img"><img src="pot.jpg" alt="Le Creuset pot"></div><div class="market-body"><div class="market-name">Le Creuset 5qt dutch oven</div><div class="market-price">$95</div></div></div>
     </div>
   </div>
 
@@ -226,17 +288,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     </div>
     <div class="events-grid">
       <!-- ═══ EVENT PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
-      <div class="event-card">
+      <div class="event-card" onclick="openEventDetail(0)" style="cursor:pointer;">
         <div class="event-date-box"><img src="roof_top_movie.jpg" alt="Movie night"><div class="event-date-inner"><div class="event-date-num">24</div><div><div class="event-date-info">APR</div></div></div></div>
         <div class="event-body"><div class="event-title">Rooftop Movie Night</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
-      <div class="event-card">
+      <div class="event-card" onclick="openEventDetail(1)" style="cursor:pointer;">
         <div class="event-date-box"><img src="garden_day.jpg" alt="Garden"><div class="event-date-inner"><div class="event-date-num">28</div><div><div class="event-date-info">APR</div></div></div></div>
         <div class="event-body"><div class="event-title">Community Garden Day</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
-      <div class="event-card">
+      <div class="event-card" onclick="openEventDetail(2)" style="cursor:pointer;">
         <div class="event-date-box"><img src="bake_off.jpg" alt="Baking"><div class="event-date-inner"><div class="event-date-num">05</div><div><div class="event-date-info">MAY</div></div></div></div>
         <div class="event-body"><div class="event-title">Bake-off Competition</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
@@ -251,9 +313,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     </div>
     <div class="groups-grid">
       <!-- ═══ GROUP PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
-      <div class="group-card"><img src="morning_runners.jpg" alt="Running"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Morning Runners</div><div class="group-count">24 members</div></div><button class="group-join">Join →</button></div></div>
-      <div class="group-card"><img src="food_collective.jpg" alt="Food"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Foodie Collective</div><div class="group-count">31 members</div></div><button class="group-join">Join →</button></div></div>
-      <div class="group-card"><img src="book_club.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">18 members</div></div><button class="group-join">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(0)" style="cursor:pointer;"><img src="morning_runners.jpg" alt="Running"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Morning Runners</div><div class="group-count">24 members</div></div><button class="group-join">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(1)" style="cursor:pointer;"><img src="food_collective.jpg" alt="Food"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Foodie Collective</div><div class="group-count">31 members</div></div><button class="group-join">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(2)" style="cursor:pointer;"><img src="book_club.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">18 members</div></div><button class="group-join">Join →</button></div></div>
     </div>
   </div>
 
@@ -318,9 +380,250 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     </div>
   </div>
 
+
+<!-- ══ DETAIL PAGES ══ -->
+
+<!-- Marketplace item detail -->
+<div class="detail-page" id="detail-market">
+  <div class="detail-nav">
+    <button class="detail-back" onclick="closeDetail('detail-market')">← Marketplace</button>
+    <span class="detail-nav-title" id="detail-market-title"></span>
+  </div>
+  <div class="detail-body">
+    <img class="detail-img" id="detail-market-img" src="" alt="">
+    <div class="detail-header">
+      <div class="detail-title" id="detail-market-name"></div>
+      <div class="detail-price" id="detail-market-price"></div>
+    </div>
+    <div class="detail-desc" id="detail-market-desc"></div>
+    <div class="detail-seller">
+      <div class="detail-avatar" id="detail-market-avatar"></div>
+      <div class="detail-seller-info">
+        <div class="detail-seller-name" id="detail-market-unit"></div>
+        <div class="detail-seller-meta">Listed <span id="detail-market-time"></span></div>
+      </div>
+    </div>
+    <button class="detail-action detail-action-primary">Message seller</button>
+    <button class="detail-action detail-action-secondary">Make an offer</button>
+  </div>
+</div>
+
+<!-- Event detail -->
+<div class="detail-page" id="detail-event">
+  <div class="detail-nav">
+    <button class="detail-back" onclick="closeDetail('detail-event')">← Events</button>
+    <span class="detail-nav-title" id="detail-event-title"></span>
+  </div>
+  <div class="detail-body">
+    <img class="detail-event-img" id="detail-event-img" src="" alt="">
+    <div class="detail-event-date" id="detail-event-date"></div>
+    <div class="detail-event-month" id="detail-event-month"></div>
+    <div class="detail-desc" id="detail-event-desc"></div>
+    <button class="detail-action detail-action-primary" id="detail-event-join-btn" onclick="toggleJoin(this)">Join this event</button>
+    <div class="detail-attendees">
+      <div class="detail-attendees-label" id="detail-event-count"></div>
+      <div id="detail-event-attendees"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Group detail -->
+<div class="detail-page" id="detail-group">
+  <div class="detail-nav">
+    <button class="detail-back" onclick="closeDetail('detail-group')">← Groups</button>
+    <span class="detail-nav-title" id="detail-group-title"></span>
+  </div>
+  <img class="detail-group-img" id="detail-group-img" src="" alt="">
+  <div class="detail-body" style="padding-top:24px;">
+    <div class="detail-header" style="margin-bottom:24px;">
+      <div>
+        <div class="detail-title" id="detail-group-name"></div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:4px;" id="detail-group-count"></div>
+      </div>
+      <button class="detail-action detail-action-primary" style="width:auto;padding:10px 24px;margin:0;" id="detail-group-join-btn" onclick="toggleGroupJoin(this)">Join group</button>
+    </div>
+    <div class="detail-tabs">
+      <button class="detail-tab active" onclick="switchTab('members')">Members</button>
+    </div>
+    <div class="tab-content active" id="tab-members">
+      <div id="detail-group-members"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Post detail -->
+<div class="detail-page" id="detail-post">
+  <div class="detail-nav">
+    <button class="detail-back" onclick="closeDetail('detail-post')">← Discussion</button>
+  </div>
+  <div class="detail-body">
+    <div class="post-detail-header">
+      <div class="post-detail-title" id="detail-post-title"></div>
+      <div class="post-detail-meta" id="detail-post-meta"></div>
+    </div>
+    <div id="detail-post-replies"></div>
+    <div class="reply-box">
+      <input class="reply-input" placeholder="Write a reply..." id="post-reply-input">
+      <button class="reply-send" onclick="sendPostReply()">Send</button>
+    </div>
+  </div>
+</div>
+
 </div><!-- /dashboard -->
 
+
+</body>
+</html>
+
 <script>
+  const marketItems = [
+    { name:"Article Sven sofa, 73in charcoal", price:"$250", img:"Sofa.jpeg", desc:"Bought 2 years ago, no pets or smoke. Moving end of month, must go. In great shape, only minor wear on armrest. Can help carry to elevator.", avatar:"JL", unit:"Unit 2014", time:"2 days ago" },
+    { name:"Trek Marlin, barely ridden", price:"$320", img:"mountain_bike.jpg", desc:"Got it last spring, used maybe 10 times total. Comes with U-lock and helmet. One small scuff on frame. Cash only, lobby pickup preferred.", avatar:"MK", unit:"Unit 1205", time:"1 day ago" },
+    { name:"Design books, 8 titles incl. IDEO", price:"$35", img:"design_book.jpg", desc:"Clearing out shelves before moving. Includes IDEO Field Guide, Grid Systems by Muller-Brockmann, Thinking with Type, and 5 others. All in great shape, no writing inside.", avatar:"SR", unit:"Unit 0703", time:"3 days ago" },
+    { name:"Nintendo Switch + 4 games", price:"$180", img:"ninetendoswithch.jpg", desc:"Includes Mario Kart 8, Zelda BotW, Stardew Valley, Hollow Knight. One small scratch on screen, no effect on gameplay. Charger and original box included.", avatar:"TW", unit:"Unit 0319", time:"4 hours ago" },
+    { name:"Monstera deliciosa, 3ft, healthy", price:"$40", img:"plant.jpg", desc:"Been growing for 2 years, lots of fenestration developing nicely. Currently in a 10in nursery pot. Happy to give care tips.", avatar:"AH", unit:"Unit 0902", time:"5 days ago" },
+    { name:"Le Creuset 5qt dutch oven, flame", price:"$95", img:"pot.jpg", desc:"Retail $400+. Used maybe a dozen times. Tiny chip on inside rim, fully functional. Perfect for soups, braises, bread. Pickup from lobby only.", avatar:"PL", unit:"Unit 0611", time:"1 week ago" }
+  ];
+
+  const eventItems = [
+    { title:"Rooftop Movie Night", date:"24", month:"APR", img:"roof_top_movie.jpg", desc:"Bring a blanket and join us on the rooftop for a screening. Popcorn and drinks provided. Movie TBD by vote. Starts at sundown around 8pm.", count:24, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"AH",u:"Unit 1512"}] },
+    { title:"Community Garden Day", date:"28", month:"APR", img:"garden_day.jpg", desc:"Planting tomatoes, herbs, and wildflowers in the courtyard planters. No experience needed. Gloves and tools provided, just show up.", count:16, attendees:[{a:"PL",u:"Unit 0605"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"},{a:"JS",u:"Unit 1108"}] },
+    { title:"Bake-off Competition", date:"05", month:"MAY", img:"bake_off.jpg", desc:"Show off your baking skills. Prizes for best cake, best cookie, and most creative. Drop off entries in the lounge by 2:30pm. Judging at 3pm.", count:38, attendees:[{a:"AL",u:"Unit 1901"},{a:"JL",u:"Unit 2014"},{a:"TN",u:"Unit 1502"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"}] }
+  ];
+
+  const groupItems = [
+    { name:"Morning Runners", count:"24 members", img:"morning_runners.jpg",
+      members:[{a:"JL",u:"Unit 2014",role:"Organiser"},{a:"MK",u:"Unit 1103",role:""},{a:"TW",u:"Unit 0208",role:""},{a:"SR",u:"Unit 0701",role:""},{a:"PL",u:"Unit 0605",role:""}],
+      replies:[{a:"JL",u:"Unit 2014",t:"1h ago",msg:"Saturday 7am Central Park, who is in? Meeting at lobby at 6:45."},{a:"MK",u:"Unit 1103",t:"45m ago",msg:"I am in! See you there."},{a:"TW",u:"Unit 0208",t:"30m ago",msg:"Count me in. Should we do the 6-mile loop?"}] },
+    { name:"Foodie Collective", count:"31 members", img:"food_collective.jpg",
+      members:[{a:"AL",u:"Unit 1901",role:"Organiser"},{a:"PL",u:"Unit 0605",role:""},{a:"JS",u:"Unit 1108",role:""},{a:"MD",u:"Unit 2003",role:""}],
+      replies:[{a:"AL",u:"Unit 1901",t:"2h ago",msg:"Anyone tried that new taco spot on Varick? Had it for lunch and it is incredible."},{a:"PL",u:"Unit 0605",t:"1h ago",msg:"YES. The al pastor is legit. Go on a weekday, weekend line is brutal."}] },
+    { name:"Book Club", count:"18 members", img:"book_club.jpg",
+      members:[{a:"SR",u:"Unit 0701",role:"Organiser"},{a:"KR",u:"Unit 0814",role:""},{a:"AH",u:"Unit 1512",role:""},{a:"JL",u:"Unit 2014",role:""}],
+      replies:[{a:"SR",u:"Unit 0701",t:"3h ago",msg:"Next meeting is May 10th in the lounge, 7pm. We are doing Demon Copperhead by Barbara Kingsolver."},{a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already halfway through, it is so good. See you all there."}] }
+  ];
+
+  const postData = {
+    laundry: { title:"Laundry room — machine 3 has been broken for 3 weeks", meta:"Unit 0814 · 1h ago", replies:[{a:"TW",u:"Unit 0208",t:"55m ago",msg:"Same, I have been going to the laundromat on Spring. Management is useless on this."},{a:"MD",u:"Unit 2003",t:"40m ago",msg:"I emailed them again this morning. If enough of us follow up they have to act. Everyone send a note to the building manager."},{a:"JS",u:"Unit 1108",t:"20m ago",msg:"Done. Also filed a 311 complaint just in case."},{a:"AL",u:"Unit 1901",t:"10m ago",msg:"Finally they replied to me, saying a tech is coming Thursday. Fingers crossed."}] },
+    packages: { title:"Someone picked up my FedEx by mistake — brown box, 12lb", meta:"Unit 1502 · 3h ago", replies:[{a:"JL",u:"Unit 2014",t:"2h ago",msg:"Happened to me last month. Check with the super first, sometimes they grab stuff that looks abandoned."},{a:"PL",u:"Unit 0605",t:"1h ago",msg:"I did not pick it up but I saw it around 3pm yesterday, so it was still there then."},{a:"TN",u:"Unit 1502",t:"30m ago",msg:"UPDATE: found it. Neighbor on 14 grabbed the wrong one by accident. All good, thank you everyone!"}] },
+    elevator: { title:"Elevator B inspection tomorrow 8am–noon — heads up", meta:"Unit 2003 · 5h ago", replies:[{a:"KR",u:"Unit 0814",t:"4h ago",msg:"Thanks for the heads up. This is going to be rough during morning rush."},{a:"SR",u:"Unit 0701",t:"3h ago",msg:"I have an Amazon delivery window from 9-12. Going to try to reschedule it."},{a:"MK",u:"Unit 1103",t:"2h ago",msg:"Management really should have given more than 12 hours notice for this."},{a:"AL",u:"Unit 1901",t:"1h ago",msg:"I sent a note asking them to do these on weekends going forward. Will share any response."}] },
+    noise: { title:"Drilling noise from 12th floor — every morning at 7am", meta:"Unit 1108 · 1d ago", replies:[{a:"AH",u:"Unit 1512",t:"22h ago",msg:"YES. I am on 13 and it wakes me up every single morning. Management confirmed construction but will not say how long."},{a:"PL",u:"Unit 0605",t:"20h ago",msg:"It starts at exactly 7 because that is the city legal start time. Nothing we can do until 9pm unfortunately."},{a:"TW",u:"Unit 0208",t:"18h ago",msg:"Has anyone spoken directly to whoever is renovating? Might be worth asking if they can push to 8am."},{a:"MD",u:"Unit 2003",t:"10h ago",msg:"Update: I knocked on 1204. Super nice couple doing a gut reno. Said they will try to start the loud work at 8 going forward."}] },
+    rooftop: { title:"Rooftop left unlocked last night — not safe", meta:"Unit 1901 · 2d ago", replies:[{a:"JS",u:"Unit 1108",t:"2d ago",msg:"This has happened at least 4 times since I moved in. Really needs a key fob or code."},{a:"KR",u:"Unit 0814",t:"2d ago",msg:"I raised this at the last building meeting. Management said they are looking into it. That was 3 months ago."},{a:"JL",u:"Unit 2014",t:"1d ago",msg:"Happy to co-sign any petition. If 20+ residents request it formally they have to respond."},{a:"SR",u:"Unit 0701",t:"1d ago",msg:"Started a shared doc. Already have 14 signatures. Few more and we will send to management."}] },
+    wifi: { title:"Anyone else's internet been slow this week?", meta:"Unit 0605 · 3d ago", replies:[{a:"MK",u:"Unit 1103",t:"3d ago",msg:"Yes, getting like 8mbps. Spectrum said it is a line issue in the building, not just my unit."},{a:"TN",u:"Unit 1502",t:"2d ago",msg:"Same. I hotspotted my phone for two days. If this is not fixed by Friday I am switching to Fios."},{a:"AH",u:"Unit 1512",t:"2d ago",msg:"Fios actually works in this building, I have it. Installation took about 2 weeks to schedule though."},{a:"PL",u:"Unit 0605",t:"1d ago",msg:"UPDATE: Spectrum came and fixed it. Back to normal speeds. Took 3 calls but got there."}] }
+  };
+
+  function openMarketDetail(idx) {
+    const d = marketItems[idx];
+    document.getElementById('detail-market-title').textContent = d.name;
+    document.getElementById('detail-market-img').src = d.img;
+    document.getElementById('detail-market-name').textContent = d.name;
+    document.getElementById('detail-market-price').textContent = d.price;
+    document.getElementById('detail-market-desc').textContent = d.desc;
+    document.getElementById('detail-market-avatar').textContent = d.avatar;
+    document.getElementById('detail-market-unit').textContent = d.unit;
+    document.getElementById('detail-market-time').textContent = d.time;
+    document.getElementById('detail-market').style.display = 'block';
+    window.scrollTo(0,0);
+  }
+
+  function openEventDetail(idx) {
+    const d = eventItems[idx];
+    document.getElementById('detail-event-title').textContent = d.title;
+    document.getElementById('detail-event-img').src = d.img;
+    document.getElementById('detail-event-date').textContent = d.date;
+    document.getElementById('detail-event-month').textContent = d.month;
+    document.getElementById('detail-event-desc').textContent = d.desc;
+    document.getElementById('detail-event-count').textContent = d.count + ' going';
+    var btn = document.getElementById('detail-event-join-btn');
+    btn.textContent = 'Join this event';
+    btn.style.background = 'var(--black)';
+    var att = document.getElementById('detail-event-attendees');
+    att.innerHTML = d.attendees.map(function(a) {
+      return '<div class="attendee-row"><div class="attendee-avatar">' + a.a + '</div><div class="attendee-unit">' + a.u + '</div></div>';
+    }).join('');
+    document.getElementById('detail-event').style.display = 'block';
+    window.scrollTo(0,0);
+  }
+
+  function openGroupDetail(idx) {
+    const d = groupItems[idx];
+    document.getElementById('detail-group-title').textContent = d.name;
+    document.getElementById('detail-group-img').src = d.img;
+    document.getElementById('detail-group-name').textContent = d.name;
+    document.getElementById('detail-group-count').textContent = d.count;
+    var btn = document.getElementById('detail-group-join-btn');
+    btn.textContent = 'Join group';
+    btn.style.background = 'var(--black)';
+    document.getElementById('detail-group-members').innerHTML = d.members.map(function(m) {
+      return '<div class="attendee-row"><div class="attendee-avatar">' + m.a + '</div><div class="attendee-unit">' + m.u + '</div>' + (m.role ? '<div style="margin-left:auto;font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">' + m.role + '</div>' : '') + '</div>';
+    }).join('');
+    document.getElementById('detail-group').style.display = 'block';
+    window.scrollTo(0,0);
+  }
+
+  function openPost(id) {
+    const d = postData[id];
+    document.getElementById('detail-post-title').textContent = d.title;
+    document.getElementById('detail-post-meta').textContent = d.meta;
+    document.getElementById('detail-post-replies').innerHTML = d.replies.map(function(r) {
+      return '<div class="reply-item"><div class="reply-avatar">' + r.a + '</div><div class="reply-body"><div class="reply-meta">' + r.u + ' · ' + r.t + '</div><div class="reply-text">' + r.msg + '</div></div></div>';
+    }).join('');
+    document.getElementById('detail-post').style.display = 'block';
+    window.scrollTo(0,0);
+  }
+
+  function closeDetail(id) {
+    document.getElementById(id).style.display = 'none';
+    window.scrollTo(0,0);
+  }
+
+  function toggleJoin(btn) {
+    if (btn.textContent === 'Join this event') {
+      btn.textContent = "You're going ✓";
+      btn.style.background = '#333';
+    } else {
+      btn.textContent = 'Join this event';
+      btn.style.background = 'var(--black)';
+    }
+  }
+
+  function toggleGroupJoin(btn) {
+    if (btn.textContent === 'Join group') {
+      btn.textContent = 'Joined ✓';
+      btn.style.background = '#333';
+    } else {
+      btn.textContent = 'Join group';
+      btn.style.background = 'var(--black)';
+    }
+  }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.detail-tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  function sendGroupReply() {
+    var input = document.getElementById('group-reply-input');
+    var text = input.value.trim();
+    if (!text) return;
+    var replies = document.getElementById('group-replies');
+    replies.innerHTML += '<div class="reply-item"><div class="reply-avatar">ME</div><div class="reply-body"><div class="reply-meta">Your unit · just now</div><div class="reply-text">' + text + '</div></div></div>';
+    input.value = '';
+    replies.lastElementChild.scrollIntoView({behavior:'smooth'});
+  }
+
+  function sendPostReply() {
+    var input = document.getElementById('post-reply-input');
+    var text = input.value.trim();
+    if (!text) return;
+    var replies = document.getElementById('detail-post-replies');
+    replies.innerHTML += '<div class="reply-item"><div class="reply-avatar">ME</div><div class="reply-body"><div class="reply-meta">Your unit · just now</div><div class="reply-text">' + text + '</div></div></div>';
+    input.value = '';
+    replies.lastElementChild.scrollIntoView({behavior:'smooth'});
+  }
+
   function showDashboard() {
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
@@ -335,30 +638,20 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
   }
   function gotoSection(id) {
     showDashboard();
-    setTimeout(() => document.getElementById(id).scrollIntoView({ behavior: 'smooth' }), 50);
-  }
-  function submitPost() {
-    const input = document.getElementById('newPostInput');
-    const text = input.value.trim();
-    if (!text) return;
-    const list = document.getElementById('discussionList');
-    const post = document.createElement('div');
-    post.className = 'post-card';
-    post.innerHTML = `
-      <div class="post-avatar">ME</div>
-      <div class="post-body">
-        <div class="post-meta">Unit 2001 · just now</div>
-        <div class="post-title">${text}</div>
-        <div class="post-preview"></div>
-      </div>
-      <div class="post-right"><div class="post-replies">0 replies</div><div class="post-time">now</div></div>
-    `;
-    list.insertBefore(post, list.firstChild);
-    input.value = '';
+    setTimeout(function(){ document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }, 50);
   }
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
+  function submitPost() {
+    var input = document.getElementById('newPostInput');
+    var text = input.value.trim();
+    if (!text) return;
+    var list = document.getElementById('discussionList');
+    var post = document.createElement('div');
+    post.className = 'post-card';
+    post.innerHTML = '<div class="post-avatar">ME</div><div class="post-body"><div class="post-meta">Your unit</div><div class="post-title">' + text + '</div></div><div class="post-right"><div class="post-replies">0 replies</div><div class="post-time">now</div></div>';
+    list.insertBefore(post, list.firstChild);
+    input.value = '';
+  }
 </script>
-</body>
-</html>
