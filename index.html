@@ -89,8 +89,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .event-card { cursor: pointer; display: flex; flex-direction: column; }
 .event-card:hover .event-date-box img { transform: scale(1.02); }
 .event-date-box { width: 100%; aspect-ratio: 3/4; position: relative; overflow: hidden; background: #1a1a1a; display: flex; align-items: flex-end; padding: 20px; }
-.event-date-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.65; transition: transform 0.5s ease; }
-.event-date-inner { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 8px; color: var(--white); }
+.event-date-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.65; transition: transform 0.5s ease; pointer-events: none; }
+.event-date-inner { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 8px; color: var(--white); pointer-events: none; }
 .event-date-num { font-size: 44px; font-weight: 700; letter-spacing: -2px; line-height: 1; }
 .event-date-info { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
 .event-date-time { font-size: 10px; opacity: 0.75; margin-top: 2px; }
@@ -98,8 +98,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .event-title { font-size: 13px; font-weight: 700; color: var(--black); line-height: 1.3; margin-bottom: 3px; }
 .event-group-tag { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
 .event-desc { display: none; }
-.event-foot { padding: 10px 0 0; }
-.join-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: transparent; color: var(--text-muted); padding: 0; cursor: pointer; transition: color 0.15s; }
+.event-foot { padding: 10px 0 0; pointer-events: none; }
+.join-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: transparent; color: var(--text-muted); padding: 0; cursor: pointer; transition: color 0.15s; pointer-events: none; }
 .join-btn:hover { color: var(--black); }
 
 /* ── GROUPS LIST ── */
@@ -394,6 +394,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="market-card" onclick="openMarketDetail(8)"><div class="market-img"><img src="labyrinth_worm_4.jpg" alt="Labyrinth Worm"></div><div class="market-body"><div class="market-seller">Unit 0814</div><div class="market-name">The Worm from Labyrinth Plush</div><div class="market-meta-row"><div class="market-price">$35</div><div class="market-condition">New</div></div></div></div>
       <div class="market-card" onclick="openMarketDetail(9)"><div class="market-img"><img src="cowboy_stool_2.jpg" alt="Cowboy Stool"></div><div class="market-body"><div class="market-seller">Unit 1901</div><div class="market-name">Cowboy Denim Jean Footstool</div><div class="market-meta-row"><div class="market-price">$125</div><div class="market-condition">Good</div></div></div></div>
       <div class="market-card" onclick="openMarketDetail(10)"><div class="market-img"><img src="ps5.jpg" alt="PS5"></div><div class="market-body"><div class="market-seller">Unit 2003</div><div class="market-name">PlayStation 5 w 2 controllers</div><div class="market-meta-row"><div class="market-price">$350</div><div class="market-condition">Like new</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(11)"><div class="market-img"><img src="coffee_table.jpg" alt="Coffee Table"></div><div class="market-body"><div class="market-seller">Unit 0814</div><div class="market-name">Modern Cloud Coffee Table</div><div class="market-meta-row"><div class="market-price">$60</div><div class="market-condition">Good</div></div></div></div>
     </div>
   </div>
 
@@ -403,40 +404,53 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="section-title-box">Upcoming Events</div>
     </div>
     <div class="events-grid">
-      <!-- ═══ EVENT PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
       <div class="event-card" onclick="openEventDetail(0)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="roof_top_movie.jpg" alt="Movie night"><div class="event-date-inner"><div class="event-date-num">24</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">8:00 PM</div></div></div></div>
-        <div class="event-body"><div class="event-title">Rooftop Movie Night</div></div>
+        <div class="event-date-box"><img src="book_club_event.jpg" alt="Book club secret"><div class="event-date-inner"><div class="event-date-num">27</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Book Club — In a Secret Place</div><div class="event-group-tag">Book Club</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(1)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="garden_day.jpg" alt="Garden"><div class="event-date-inner"><div class="event-date-num">28</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">10:00 AM</div></div></div></div>
-        <div class="event-body"><div class="event-title">Community Garden Day</div></div>
+        <div class="event-date-box"><img src="barre.jpg" alt="Barre"><div class="event-date-inner"><div class="event-date-num">05</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">6:30 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Barre</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(2)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="bake_off.jpg" alt="Baking"><div class="event-date-inner"><div class="event-date-num">05</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">3:00 PM</div></div></div></div>
-        <div class="event-body"><div class="event-title">Bake-off Competition</div></div>
+        <div class="event-date-box"><img src="hiit.jpg" alt="HIIT"><div class="event-date-inner"><div class="event-date-num">02</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">10:30 AM</div></div></div></div>
+        <div class="event-body"><div class="event-title">HIIT Class</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(3)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="morning_runners.jpg" alt="Run"><div class="event-date-inner"><div class="event-date-num">03</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">7:00 AM</div></div></div></div>
-        <div class="event-body"><div class="event-title">Saturday Morning Run</div><div class="event-group-tag">Morning Runners</div></div>
+        <div class="event-date-box"><img src="zumba.jpg" alt="Zumba"><div class="event-date-inner"><div class="event-date-num">30</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Zumba</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(4)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="food_collective.jpg" alt="Food tour"><div class="event-date-inner"><div class="event-date-num">10</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
-        <div class="event-body"><div class="event-title">West Village Food Tour</div><div class="event-group-tag">Foodie Collective</div></div>
+        <div class="event-date-box"><img src="yoga.jpg" alt="Yoga"><div class="event-date-inner"><div class="event-date-num">12</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">10:30 AM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Yoga</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(5)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="book_club.jpg" alt="Book club"><div class="event-date-inner"><div class="event-date-num">10</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">7:00 PM</div></div></div></div>
-        <div class="event-body"><div class="event-title">Book Club: Demon Copperhead</div><div class="event-group-tag">Book Club</div></div>
+        <div class="event-date-box"><img src="candle.jpg" alt="Candle"><div class="event-date-inner"><div class="event-date-num">06</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">The Candle Edit</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
-    </div>
-  </div>
+      <div class="event-card" onclick="openEventDetail(6)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="soundbath.jpg" alt="Soundbath"><div class="event-date-inner"><div class="event-date-num">19</div><div><div class="event-date-info">MAR 2026</div><div class="event-date-time">7:30 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Soundbath</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
+      <div class="event-card" onclick="openEventDetail(7)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="superbowl.jpg" alt="Super Bowl"><div class="event-date-inner"><div class="event-date-num">08</div><div><div class="event-date-info">FEB 2026</div><div class="event-date-time">6:30 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Super Bowl LX Watch Party</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
+      <div class="event-card" onclick="openEventDetail(8)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="game_night.jpg" alt="Game Night"><div class="event-date-inner"><div class="event-date-num">25</div><div><div class="event-date-info">FEB 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Game Night</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
 
+    </div>
   <!-- GROUPS -->
   <div class="section-wrap" id="groups">
     <div class="section-head">
@@ -482,8 +496,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
         <div class="detail-seller-meta">Listed <span id="detail-market-time"></span></div>
       </div>
     </div>
-    <button class="detail-action detail-action-primary">Message seller</button>
-    <button class="detail-action detail-action-secondary">Make an offer</button>
+    <button class="detail-action detail-action-primary">Make an offer</button>
+    <button class="detail-action detail-action-secondary">Message seller</button>
   </div>
 </div>
 
@@ -561,6 +575,30 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
   </div>
 </div>
 
+
+<!-- CHAT MODAL -->
+<div id="chatModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;align-items:flex-end;justify-content:flex-end;">
+  <div style="background:#fff;width:380px;height:520px;margin:0 40px 40px 0;display:flex;flex-direction:column;border:2px solid #111;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e8e8e8;">
+      <div>
+        <div id="chat-seller-name" style="font-size:13px;font-weight:700;letter-spacing:-0.3px;"></div>
+        <div id="chat-item-name" style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#999;margin-top:2px;"></div>
+      </div>
+      <button onclick="closeChat()" style="background:none;border:none;font-size:20px;cursor:pointer;color:#999;font-family:inherit;">×</button>
+    </div>
+    <div id="chatMessages" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;">
+      <div style="align-self:flex-start;max-width:75%;">
+        <div style="background:#f5f5f5;padding:10px 14px;font-size:13px;line-height:1.5;" id="chat-opening-msg"></div>
+        <div style="font-size:10px;color:#bbb;margin-top:4px;letter-spacing:0.5px;">just now</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #e8e8e8;padding:16px;display:flex;gap:10px;">
+      <input id="chatInput" placeholder="Write a message..." style="flex:1;border:none;border-bottom:2px solid #111;padding:8px 0;font-family:inherit;font-size:13px;outline:none;" onkeydown="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()" style="background:#111;color:#fff;border:none;padding:8px 16px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Send</button>
+    </div>
+  </div>
+</div>
+
 </div><!-- /dashboard -->
 
 
@@ -579,16 +617,20 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     { name:"Handmade Support Worm", condition:"New", price:"$40", img:"support_worm.jpg", imgs:["support_worm.jpg","support_worm_2.jpg"], desc:"Someone once said, for when nothing else works. That kind of stuck with me. So I made this little guy. He is not here to fix your problems. Just here to sit with you through them. We all need something like that sometimes. Customization available. Ships for $9.09.", avatar:"TN", unit:"Unit 1502", time:"1 week ago" },
     { name:"The Worm from Labyrinth Plush", condition:"New", price:"$35", img:"labyrinth_worm_4.jpg", imgs:["labyrinth_worm_4.jpg","labyrinth_worm_2.jpg","labyrinth_worm_3.jpg"], desc:"Official Toy Vault plush from Jim Henson's Labyrinth movie. Brand new with original tags. The Worm lives among the twists and turns of the Labyrinth, sipping tea and keeping lost travellers from taking a wrong turn. A classic piece for any Labyrinth fan.", avatar:"KR", unit:"Unit 0814", time:"1 week ago" },
     { name:"Cowboy Denim Jean Footstool", condition:"Good", price:"$125", img:"cowboy_stool_2.jpg", imgs:["cowboy_stool_2.jpg"], desc:"Jean cowboy foot stool — not stable enough to be a chair but god isn't it cute. Made from stuffed denim jeans with cowboy boots attached. Perfect statement piece. Pickup from Unit 1901, lobby meetup works too.", avatar:"AL", unit:"Unit 1901", time:"3 days ago" },
-    { name:"PlayStation 5 w 2 controllers", condition:"Like new", price:"$350", img:"ps5.jpg", imgs:["ps5.jpg","ps5_2.jpg","ps5_3.jpg"], desc:"Selling my PS5 — barely used because I have a PC. Comes with all cables and 2 controllers, 1 white and 1 black. Like new condition. Door pickup or public meetup.", avatar:"MD", unit:"Unit 2003", time:"just now" }
+    { name:"PlayStation 5 w 2 controllers", condition:"Like new", price:"$350", img:"ps5.jpg", imgs:["ps5.jpg","ps5_2.jpg","ps5_3.jpg"], desc:"Selling my PS5 — barely used because I have a PC. Comes with all cables and 2 controllers, 1 white and 1 black. Like new condition. Door pickup or public meetup.", avatar:"MD", unit:"Unit 2003", time:"just now" },
+    { name:"Modern Cloud Coffee Table", condition:"Good", price:"$60", img:"coffee_table.jpg", imgs:["coffee_table.jpg","coffee_table_2.jpg"], desc:"Cloud shaped coffee table with four cylinder legs. White painted wood. Ideal for modern and midcentury decor in small apartments. Dimensions: H 15.5in x W 26.5in x L 39.5in. Door pickup only.", avatar:"KR", unit:"Unit 0814", time:"7 hours ago" }
   ];
 
   const eventItems = [
-    { title:"Rooftop Movie Night", date:"24", month:"APR", img:"roof_top_movie.jpg", desc:"Bring a blanket and join us on the rooftop for a screening. Popcorn and drinks provided. Movie TBD by vote. Starts at sundown around 8pm.", count:24, group:null, groupIdx:null, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"AH",u:"Unit 1512"}] },
-    { title:"Community Garden Day", date:"28", month:"APR", img:"garden_day.jpg", desc:"Planting tomatoes, herbs, and wildflowers in the courtyard planters. No experience needed. Gloves and tools provided, just show up.", count:16, group:null, groupIdx:null, attendees:[{a:"PL",u:"Unit 0605"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"},{a:"JS",u:"Unit 1108"}] },
-    { title:"Bake-off Competition", date:"05", month:"MAY", img:"bake_off.jpg", desc:"Show off your baking skills. Prizes for best cake, best cookie, and most creative. Drop off entries in the lounge by 2:30pm. Judging at 3pm.", count:38, group:null, groupIdx:null, attendees:[{a:"AL",u:"Unit 1901"},{a:"JL",u:"Unit 2014"},{a:"TN",u:"Unit 1502"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"}] },
-    { title:"Saturday Morning Run", date:"03", month:"MAY", img:"morning_runners.jpg", desc:"Weekly group run starting from the lobby at 7am. This week we are doing the Central Park 6-mile loop. All paces welcome, no one gets left behind.", count:12, group:"Morning Runners", groupIdx:0, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"TW",u:"Unit 0208"},{a:"SR",u:"Unit 0701"}] },
-    { title:"West Village Food Tour", date:"10", month:"MAY", img:"food_collective.jpg", desc:"Foodie Collective is doing a self-guided tour of the West Village. We will hit 4 spots: tacos, ramen, natural wine bar, and gelato. Meet in lobby at 6pm.", count:19, group:"Foodie Collective", groupIdx:1, attendees:[{a:"AL",u:"Unit 1901"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MD",u:"Unit 2003"},{a:"MK",u:"Unit 1103"},{a:"TN",u:"Unit 1502"},{a:"SR",u:"Unit 0701"},{a:"KR",u:"Unit 0814"}] },
-    { title:"Book Club: Demon Copperhead", date:"10", month:"MAY", img:"book_club.jpg", desc:"Monthly meet for Book Club. This month we are reading Demon Copperhead by Barbara Kingsolver. Lounge, 7pm. Wine and cheese encouraged.", count:14, group:"Book Club", groupIdx:2, attendees:[{a:"SR",u:"Unit 0701"},{a:"KR",u:"Unit 0814"},{a:"AH",u:"Unit 1512"},{a:"JL",u:"Unit 2014"},{a:"TW",u:"Unit 0208"},{a:"MD",u:"Unit 2003"},{a:"PL",u:"Unit 0605"}] }
+    { title:"Book Club — In a Secret Place", date:"27", month:"MAY", datetime:"Wednesday, May 27, 2026 · 6:00 PM", location:"Secret location — RSVP to get details", img:"book_club_event.jpg", desc:"Join us to discuss last month book and help choose our next read. Secret location — only those who RSVP or have been attending will get the details. Bring your favorite book ideas, reading wish list, and an open mind!", count:7, group:"Book Club", groupIdx:2, attendees:[{a:"SR",u:"Unit 0701"},{a:"KR",u:"Unit 0814"},{a:"AH",u:"Unit 1512"},{a:"JL",u:"Unit 2014"},{a:"TW",u:"Unit 0208"},{a:"PL",u:"Unit 0605"},{a:"MD",u:"Unit 2003"}] },
+    { title:"Barre", date:"05", month:"MAY", datetime:"Tuesday, May 5, 2026 · 6:30 PM", location:"Yoga Studio — Ground Floor", img:"barre.jpg", desc:"Strengthen your core, improve flexibility, and find balance with this energizing Barre Pilates class. Perfect for all fitness levels. With Missy Jayme. Bring your yoga mat, water bottle, and a readiness to tone and strengthen! Please RSVP.", count:1, group:"Yoga & Wellness", groupIdx:null, attendees:[{a:"AH",u:"Unit 1512"}] },
+    { title:"HIIT Class", date:"02", month:"MAY", datetime:"Saturday, May 2, 2026 · 10:30 AM", location:"Yoga Studio — Ground Floor", img:"hiit.jpg", desc:"Get your heart pumping with this high-intensity interval training class! A fast-paced, full-body workout designed to boost strength, endurance, and energy. With Caitlin Munson. Bring water bottle, workout gear, and lots of energy! Please RSVP.", count:2, group:null, groupIdx:null, attendees:[{a:"MK",u:"Unit 1103"},{a:"TW",u:"Unit 0208"}] },
+    { title:"Zumba", date:"30", month:"APR", datetime:"Thursday, April 30, 2026 · 6:00 PM", location:"Yoga Studio — Ground Floor", img:"zumba.jpg", desc:"Dance your way to fitness with this high-energy Zumba class! Enjoy a mix of fun, easy-to-follow dance moves set to upbeat music that will leave you smiling and sweating. Perfect for all fitness levels. Instructor: Galiya. Bring comfortable workout gear, water bottle, and dancing shoes!", count:5, group:null, groupIdx:null, attendees:[{a:"AL",u:"Unit 1901"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"}] },
+    { title:"Yoga", date:"12", month:"APR", datetime:"Sunday, April 12, 2026 · 10:30 AM", location:"Yoga Studio — Ground Floor", img:"yoga.jpg", desc:"Relax, stretch, and unwind with our weekly yoga sessions! Whether you are a beginner or experienced, this session is perfect for finding your zen. With Stephany Lopez. Bring a yoga mat, water bottle, and a calm mindset. Please RSVP.", count:6, group:"Yoga & Wellness", groupIdx:null, attendees:[{a:"AH",u:"Unit 1512"},{a:"SR",u:"Unit 0701"},{a:"PL",u:"Unit 0605"},{a:"TW",u:"Unit 0208"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"}] },
+    { title:"The Candle Edit", date:"06", month:"APR", datetime:"Monday, April 6, 2026 · 6:00 PM", location:"Parlor — 2F", img:"candle.jpg", desc:"Come unwind at a cozy, creative evening where you will design your very own custom candle. Whether you are feeling artistic or just want to try something new, we have got everything you need to make it special. All materials provided. No experience necessary. Bring your creativity and good vibes!", count:26, group:null, groupIdx:null, attendees:[{a:"AL",u:"Unit 1901"},{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"KR",u:"Unit 0814"},{a:"AH",u:"Unit 1512"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MD",u:"Unit 2003"},{a:"TN",u:"Unit 1502"}] },
+    { title:"Soundbath", date:"19", month:"MAR", datetime:"Thursday, March 19, 2026 · 7:30 PM", location:"Yoga Studio — Ground Floor", img:"soundbath.jpg", desc:"Immerse yourself in a soothing soundbath experience. Let the calming vibrations of crystal bowls and gentle tones help you release stress, center your mind, and find deep relaxation. Perfect for all seeking tranquility. With Brendan Gibbons. Bring comfortable clothing, yoga mat, and an open heart.", count:12, group:"Yoga & Wellness", groupIdx:null, attendees:[{a:"AH",u:"Unit 1512"},{a:"SR",u:"Unit 0701"},{a:"PL",u:"Unit 0605"},{a:"TW",u:"Unit 0208"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"},{a:"JS",u:"Unit 1108"},{a:"MK",u:"Unit 1103"},{a:"JL",u:"Unit 2014"},{a:"AL",u:"Unit 1901"},{a:"TN",u:"Unit 1502"},{a:"SK",u:"Unit 0512"}] },
+    { title:"Super Bowl LX Watch Party", date:"08", month:"FEB", datetime:"Sunday, February 8, 2026 · 6:30 PM", location:"25th Floor Parlor", img:"superbowl.jpg", desc:"Touchdowns, Snacks and Good Vibes! Get ready for the biggest game of the year! Join us for a Super Bowl LX Watch Party as we cheer, snack, and celebrate every touchdown, commercial, and halftime show moment. Whether you are a die-hard fan or just here for the good vibes, come enjoy the game with neighbors. RSVP required so we can prepare for everyone attending.", count:35, group:null, groupIdx:null, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"TW",u:"Unit 0208"},{a:"SR",u:"Unit 0701"},{a:"AL",u:"Unit 1901"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MD",u:"Unit 2003"},{a:"KR",u:"Unit 0814"},{a:"TN",u:"Unit 1502"},{a:"AH",u:"Unit 1512"}] },
+    { title:"Game Night", date:"25", month:"FEB", datetime:"Wednesday, February 25, 2026 · 6:00 PM", location:"25th Floor Parlor", img:"game_night.jpg", desc:"Bring your competitive spirit and join us for a fun-filled evening. We will be providing the games, you bring the laughs! Do not miss out on the friendly competition and great company. Please RSVP, it helps us plan and ensures you will receive reminders.", count:20, group:null, groupIdx:null, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"AL",u:"Unit 1901"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MD",u:"Unit 2003"},{a:"KR",u:"Unit 0814"},{a:"AH",u:"Unit 1512"},{a:"TN",u:"Unit 1502"}] }
   ];
 
   const groupItems = [
@@ -630,7 +672,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
         {a:"PL",u:"Unit 0605",role:""}
       ],
       posts:[{a:"SR",u:"Unit 0701",t:"3h ago",msg:"Next meeting is May 10th in the lounge, 7pm. We are doing Demon Copperhead by Barbara Kingsolver."},{a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already halfway through, it is so good. See you all there."},{a:"AH",u:"Unit 1512",t:"1h ago",msg:"Should we do a wine and cheese thing while we discuss? I can bring a bottle."}],
-      events:[{idx:5,title:"Book Club: Demon Copperhead",date:"10",month:"MAY",going:7}] }
+      events:[{idx:5,title:"Book Club: Demon Copperhead",date:"10",month:"MAY",going:7},{idx:5,title:"Book Club — In a Secret Place",date:"27",month:"MAY",going:7}] }
   ];
 
   const postData = {
@@ -642,7 +684,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     wifi: { title:"Anyone else's internet been slow this week?", meta:"Unit 0605 · 3d ago", replies:[{a:"MK",u:"Unit 1103",t:"3d ago",msg:"Yes, getting like 8mbps. Spectrum said it is a line issue in the building, not just my unit."},{a:"TN",u:"Unit 1502",t:"2d ago",msg:"Same. I hotspotted my phone for two days. If this is not fixed by Friday I am switching to Fios."},{a:"AH",u:"Unit 1512",t:"2d ago",msg:"Fios actually works in this building, I have it. Installation took about 2 weeks to schedule though."},{a:"PL",u:"Unit 0605",t:"1d ago",msg:"UPDATE: Spectrum came and fixed it. Back to normal speeds. Took 3 calls but got there."}] }
   };
 
+  var currentMarketIdx = null;
   function openMarketDetail(idx) {
+    currentMarketIdx = idx;
     const d = marketItems[idx];
     document.getElementById('detail-market-title').textContent = d.name;
     document.getElementById('detail-market-img').src = d.img;
@@ -755,6 +799,44 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     document.getElementById('navActions').style.display = 'none';
     document.getElementById('enterBtn').style.visibility = 'visible';
   }
+
+  var currentChatItem = null;
+
+  function openChat() {
+    var idx = currentMarketIdx;
+    if (idx === undefined || idx === null) return;
+    var d = marketItems[idx];
+    currentChatItem = d;
+    document.getElementById('chat-seller-name').textContent = d.unit;
+    document.getElementById('chat-item-name').textContent = d.name;
+    document.getElementById('chat-opening-msg').textContent = 'Hi, is the ' + d.name + ' still available?';
+    document.getElementById('chatMessages').innerHTML = '<div style="align-self:flex-start;max-width:75%;"><div style="background:#f5f5f5;padding:10px 14px;font-size:13px;line-height:1.5;">Hi, is the ' + d.name + ' still available?</div><div style="font-size:10px;color:#bbb;margin-top:4px;letter-spacing:0.5px;">just now</div></div>';
+    document.getElementById('chatModal').style.display = 'flex';
+    setTimeout(function(){ document.getElementById('chatInput').focus(); }, 100);
+  }
+
+  function closeChat() {
+    document.getElementById('chatModal').style.display = 'none';
+  }
+
+  function sendChat() {
+    var input = document.getElementById('chatInput');
+    var text = input.value.trim();
+    if (!text) return;
+    var messages = document.getElementById('chatMessages');
+    messages.innerHTML += '<div style="align-self:flex-end;max-width:75%;"><div style="background:#111;color:#fff;padding:10px 14px;font-size:13px;line-height:1.5;">' + text + '</div><div style="font-size:10px;color:#bbb;margin-top:4px;letter-spacing:0.5px;text-align:right;">just now</div></div>';
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    // Auto reply after 1.2s
+    setTimeout(function() {
+      var replies = ["Thanks for reaching out! Yes it's still available.", "Hi! Let me check and get back to you.", "Sure, when would you like to pick it up?", "Great, it's available. Lobby pickup works best for me."];
+      var reply = replies[Math.floor(Math.random() * replies.length)];
+      messages.innerHTML += '<div style="align-self:flex-start;max-width:75%;"><div style="background:#f5f5f5;padding:10px 14px;font-size:13px;line-height:1.5;">' + reply + '</div><div style="font-size:10px;color:#bbb;margin-top:4px;letter-spacing:0.5px;">just now</div></div>';
+      messages.scrollTop = messages.scrollHeight;
+    }, 1200);
+  }
+
   function showLogin2() {
     document.getElementById('loginModal').style.display = 'flex';
   }
