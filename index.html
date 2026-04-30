@@ -55,7 +55,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 /* ── DASHBOARD ── */
 #dashboard { display: none; padding-top: 56px; }
 
-.dash-hero { min-height: 420px; background: url('building.jpg') center center / cover no-repeat; display: flex; align-items: flex-end; padding: 64px; position: relative; }
+.dash-hero { min-height: 420px; background: url('building.jpg') center center / cover no-repeat; display: flex; align-items: flex-end; padding: 64px 64px; position: relative; }
 .dash-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); pointer-events: none; }
 .dash-left { position: relative; z-index: 1; }
 .dash-h { font-size: clamp(32px, 4vw, 60px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.05; color: var(--white); margin-bottom: 32px; }
@@ -66,7 +66,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .dash-right { display: none; }
 
 /* ── SECTIONS ── */
-.section-wrap { padding: 64px; }
+.section-wrap { padding: 80px 64px; }
 .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: var(--line); padding-top: 0; }
 .section-title-box { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
 
@@ -103,10 +103,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .join-btn:hover { color: var(--black); }
 
 /* ── GROUPS LIST ── */
-.groups-grid { display: flex; flex-direction: column; }
+.groups-grid { display: flex; flex-direction: column; width: 100%; }
 .group-card { display: flex; align-items: center; gap: 24px; padding: 20px 0; border-bottom: var(--line); cursor: pointer; transition: background 0.1s; position: static; overflow: visible; min-height: auto; justify-content: flex-start; }
-.group-card:first-child { border-top: var(--line); }
-.group-card:first-child { border-top: var(--line); }
+
+
 .group-card:hover { background: var(--gray); margin: 0 -16px; padding-left: 16px; padding-right: 16px; opacity: 1; }
 .group-card img { width: 80px; height: 80px; object-fit: cover; flex-shrink: 0; position: static; }
 .group-overlay { display: none; }
@@ -452,6 +452,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       </div>
 
     </div>
+  </div>
+
   <!-- GROUPS -->
   <div class="section-wrap" id="groups">
     <div class="section-head">
