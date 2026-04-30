@@ -345,18 +345,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 <!-- ══ PRE-LOGIN ══ -->
 <div id="loginPage">
   <div class="lp-hero">
-    <div></div>
-    <h1 class="lp-h1">Your building,<br><em>your community.</em></h1>
-    <button class="lp-btn-enter" onclick="showDashboard()">Enter your building →</button>
+    <div id="lp-hero-top"></div>
+    <h1 class="lp-h1" id="lp-hero-title">Your building,<br><em>your community.</em></h1>
+    <button class="lp-btn-enter" id="enterBtn" onclick="showDashboard()" style="visibility:hidden;">Enter your building →</button>
   </div>
   <!-- LOGIN MODAL -->
   <div id="loginModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;display:none;align-items:center;justify-content:center;">
     <div style="background:#fff;padding:48px;max-width:400px;width:90%;position:relative;">
       <button onclick="closeLoginModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;font-family:inherit;">×</button>
       <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Log in to STOOP</div>
-      <input placeholder="Unit number (e.g. 2014)" style="width:100%;border:none;border-bottom:2px solid #111;padding:10px 0;font-family:inherit;font-size:14px;outline:none;margin-bottom:16px;display:block;">
+      <input placeholder="Unit number" style="width:100%;border:none;border-bottom:2px solid #111;padding:10px 0;font-family:inherit;font-size:14px;outline:none;margin-bottom:16px;display:block;">
       <input type="password" placeholder="Password" style="width:100%;border:none;border-bottom:2px solid #111;padding:10px 0;font-family:inherit;font-size:14px;outline:none;margin-bottom:32px;display:block;">
-      <button onclick="showDashboard();closeLoginModal()" style="width:100%;padding:14px;background:#111;color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Log in</button>
+      <button onclick="handleLogin()" style="width:100%;padding:14px;background:#111;color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Log in</button>
     </div>
   </div>
 </div>
@@ -393,6 +393,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="market-card" onclick="openMarketDetail(7)"><div class="market-img"><img src="support_worm.jpg" alt="Support Worm"></div><div class="market-body"><div class="market-seller">Unit 1502</div><div class="market-name">Handmade Support Worm</div><div class="market-meta-row"><div class="market-price">$40</div><div class="market-condition">New</div></div></div></div>
       <div class="market-card" onclick="openMarketDetail(8)"><div class="market-img"><img src="labyrinth_worm_4.jpg" alt="Labyrinth Worm"></div><div class="market-body"><div class="market-seller">Unit 0814</div><div class="market-name">The Worm from Labyrinth Plush</div><div class="market-meta-row"><div class="market-price">$35</div><div class="market-condition">New</div></div></div></div>
       <div class="market-card" onclick="openMarketDetail(9)"><div class="market-img"><img src="cowboy_stool_2.jpg" alt="Cowboy Stool"></div><div class="market-body"><div class="market-seller">Unit 1901</div><div class="market-name">Cowboy Denim Jean Footstool</div><div class="market-meta-row"><div class="market-price">$125</div><div class="market-condition">Good</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(10)"><div class="market-img"><img src="ps5.jpg" alt="PS5"></div><div class="market-body"><div class="market-seller">Unit 2003</div><div class="market-name">PlayStation 5 w 2 controllers</div><div class="market-meta-row"><div class="market-price">$350</div><div class="market-condition">Like new</div></div></div></div>
     </div>
   </div>
 
@@ -577,7 +578,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     { name:"3D Printed Roman Cat Helmet", condition:"New", price:"$25", img:"cat_helmet.jpg", imgs:["cat_helmet.jpg","cat_helmet_2.jpg","cat_helmet_3.jpg"], desc:"3D printed Roman-style cat helmet for your pet. Lightweight and durable, designed for photos and special occasions. Comes in gray. Hilarious and eye-catching. Public meetup or door pickup.", avatar:"JS", unit:"Unit 1108", time:"3 weeks ago" },
     { name:"Handmade Support Worm", condition:"New", price:"$40", img:"support_worm.jpg", imgs:["support_worm.jpg","support_worm_2.jpg"], desc:"Someone once said, for when nothing else works. That kind of stuck with me. So I made this little guy. He is not here to fix your problems. Just here to sit with you through them. We all need something like that sometimes. Customization available. Ships for $9.09.", avatar:"TN", unit:"Unit 1502", time:"1 week ago" },
     { name:"The Worm from Labyrinth Plush", condition:"New", price:"$35", img:"labyrinth_worm_4.jpg", imgs:["labyrinth_worm_4.jpg","labyrinth_worm_2.jpg","labyrinth_worm_3.jpg"], desc:"Official Toy Vault plush from Jim Henson's Labyrinth movie. Brand new with original tags. The Worm lives among the twists and turns of the Labyrinth, sipping tea and keeping lost travellers from taking a wrong turn. A classic piece for any Labyrinth fan.", avatar:"KR", unit:"Unit 0814", time:"1 week ago" },
-    { name:"Cowboy Denim Jean Footstool", condition:"Good", price:"$125", img:"cowboy_stool_2.jpg", imgs:["cowboy_stool_2.jpg"], desc:"Jean cowboy foot stool — not stable enough to be a chair but god isn't it cute. Made from stuffed denim jeans with cowboy boots attached. Perfect statement piece. Pickup from Unit 1901, lobby meetup works too.", avatar:"AL", unit:"Unit 1901", time:"3 days ago" }
+    { name:"Cowboy Denim Jean Footstool", condition:"Good", price:"$125", img:"cowboy_stool_2.jpg", imgs:["cowboy_stool_2.jpg"], desc:"Jean cowboy foot stool — not stable enough to be a chair but god isn't it cute. Made from stuffed denim jeans with cowboy boots attached. Perfect statement piece. Pickup from Unit 1901, lobby meetup works too.", avatar:"AL", unit:"Unit 1901", time:"3 days ago" },
+    { name:"PlayStation 5 w 2 controllers", condition:"Like new", price:"$350", img:"ps5.jpg", imgs:["ps5.jpg","ps5_2.jpg","ps5_3.jpg"], desc:"Selling my PS5 — barely used because I have a PC. Comes with all cables and 2 controllers, 1 white and 1 black. Like new condition. Door pickup or public meetup.", avatar:"MD", unit:"Unit 2003", time:"just now" }
   ];
 
   const eventItems = [
@@ -744,6 +746,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       btn.textContent = 'Join →';
       btn.style.background = '';
     }
+  }
+  function handleLogin() {
+    var unit = document.querySelector('#loginModal input[placeholder="Unit number"]').value.trim();
+    var pass = document.querySelector('#loginModal input[type="password"]').value.trim();
+    if (!unit || !pass) return;
+    closeLoginModal();
+    document.getElementById('navActions').style.display = 'none';
+    document.getElementById('enterBtn').style.visibility = 'visible';
   }
   function showLogin2() {
     document.getElementById('loginModal').style.display = 'flex';
