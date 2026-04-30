@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
 body { background: var(--white); color: var(--black); font-family: 'IBM Plex Mono', monospace; font-size: 14px; line-height: 1.5; }
 
 /* ── NAV ── */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: var(--line); display: flex; align-items: center; height: 56px; padding: 0 40px; gap: 40px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: var(--line); display: flex; align-items: center; height: 56px; padding: 0 64px; gap: 40px; }
 .nav-logo { font-weight: 700; font-size: 15px; letter-spacing: 1px; cursor: pointer; color: var(--black); text-decoration: none; white-space: nowrap; }
 .nav-links { display: flex; list-style: none; gap: 32px; flex: 1; }
 .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.15s; white-space: nowrap; }
@@ -66,8 +66,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .dash-right { display: none; }
 
 /* ── SECTIONS ── */
-.section-wrap { padding: 64px; border-top: var(--line); }
-.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; padding-bottom: 16px; border-bottom: var(--line); }
+.section-wrap { padding: 64px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; padding-bottom: 20px; border-bottom: var(--line); padding-top: 0; }
 .section-title-box { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
 
 /* ── MARKETPLACE GRID — big image style ── */
@@ -106,6 +106,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .groups-grid { display: flex; flex-direction: column; }
 .group-card { display: flex; align-items: center; gap: 24px; padding: 20px 0; border-bottom: var(--line); cursor: pointer; transition: background 0.1s; position: static; overflow: visible; min-height: auto; justify-content: flex-start; }
 .group-card:first-child { border-top: var(--line); }
+.group-card:first-child { border-top: var(--line); }
 .group-card:hover { background: var(--gray); margin: 0 -16px; padding-left: 16px; padding-right: 16px; opacity: 1; }
 .group-card img { width: 80px; height: 80px; object-fit: cover; flex-shrink: 0; position: static; }
 .group-overlay { display: none; }
@@ -119,7 +120,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   /* Nav */
-  nav { padding: 0 20px; gap: 0; }
+  nav { padding: 0 24px; gap: 0; }
   .nav-links, .nav-actions { display: none; }
   .hamburger { display: block; }
   .nav-logo { font-size: 14px; padding: 0 16px; }
@@ -327,7 +328,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 <nav>
   <div class="nav-logo" onclick="showLogin()">STOOP</div>
   <ul class="nav-links">
-    <li><a href="#" onclick="gotoSection('marketplace'); return false;">Browse Listing</a></li>
+    <li><a href="#" onclick="gotoSection('marketplace'); return false;">Marketplace</a></li>
     <li><a href="#" onclick="gotoSection('events'); return false;">Events</a></li>
     <li><a href="#" onclick="gotoSection('groups'); return false;">Groups</a></li>
   </ul>
@@ -336,7 +337,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#" onclick="gotoSection('marketplace');toggleMenu()">Browse Listing</a>
+  <a href="#" onclick="gotoSection('marketplace');toggleMenu()">Marketplace</a>
   <a href="#" onclick="gotoSection('events');toggleMenu()">Events</a>
   <a href="#" onclick="gotoSection('groups');toggleMenu()">Groups</a>
   <button class="m-btn" onclick="showDashboard();toggleMenu()">Get started →</button>
@@ -457,9 +458,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="section-title-box">Interest Groups</div>
     </div>
     <div class="groups-grid">
-      <div class="group-card" onclick="openGroupDetail(0)" style="cursor:pointer;"><img src="morning_runners.jpg" alt="Running"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Morning Runners</div><div class="group-count">9 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
-      <div class="group-card" onclick="openGroupDetail(1)" style="cursor:pointer;"><img src="food_collective.jpg" alt="Food"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Foodie Collective</div><div class="group-count">4 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
-      <div class="group-card" onclick="openGroupDetail(2)" style="cursor:pointer;"><img src="book_club.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">7 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(0)" style="cursor:pointer;"><img src="yoga.jpg" alt="Yoga Wellness"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Yoga & Wellness</div><div class="group-count">12 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(1)" style="cursor:pointer;"><img src="book_club_event.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">7 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(2)" style="cursor:pointer;"><img src="game_night.jpg" alt="Game Social"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Game & Social</div><div class="group-count">11 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
     </div>
   </div>
 
@@ -634,34 +635,26 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
   ];
 
   const groupItems = [
-    { name:"Morning Runners", count:"9 members", img:"morning_runners.jpg",
+    { name:"Yoga & Wellness", count:"12 members", img:"yoga.jpg",
       members:[
-        {a:"JL",u:"Unit 2014",role:"Organiser"},
-        {a:"MK",u:"Unit 1103",role:""},
-        {a:"TW",u:"Unit 0208",role:""},
+        {a:"AH",u:"Unit 1512",role:"Organiser"},
         {a:"SR",u:"Unit 0701",role:""},
         {a:"PL",u:"Unit 0605",role:""},
+        {a:"TW",u:"Unit 0208",role:""},
         {a:"KR",u:"Unit 0814",role:""},
         {a:"MD",u:"Unit 2003",role:""},
-        {a:"TN",u:"Unit 1502",role:""},
-        {a:"AH",u:"Unit 1512",role:""}
-      ],
-      posts:[{a:"JL",u:"Unit 2014",t:"1h ago",msg:"Saturday 7am Central Park, who is in? Meeting at lobby at 6:45."},{a:"MK",u:"Unit 1103",t:"45m ago",msg:"I am in! See you there."},{a:"TW",u:"Unit 0208",t:"30m ago",msg:"Count me in. Should we do the 6-mile loop?"}],
-      events:[{idx:3,title:"Saturday Morning Run",date:"03",month:"MAY",going:9}] },
-    { name:"Foodie Collective", count:"8 members", img:"food_collective.jpg",
-      members:[
-        {a:"AL",u:"Unit 1901",role:"Organiser"},
-        {a:"PL",u:"Unit 0605",role:""},
         {a:"JS",u:"Unit 1108",role:""},
-        {a:"MD",u:"Unit 2003",role:""},
         {a:"MK",u:"Unit 1103",role:""},
-        {a:"TN",u:"Unit 1502",role:""},
-        {a:"SR",u:"Unit 0701",role:""},
-        {a:"KR",u:"Unit 0814",role:""}
+        {a:"JL",u:"Unit 2014",role:""}
       ],
-      posts:[{a:"AL",u:"Unit 1901",t:"2h ago",msg:"Anyone tried that new taco spot on Varick? Had it for lunch and it is incredible."},{a:"PL",u:"Unit 0605",t:"1h ago",msg:"YES. The al pastor is legit. Go on a weekday, weekend line is brutal."},{a:"JS",u:"Unit 1108",t:"30m ago",msg:"We should do a group dinner soon. I know a great spot in the West Village."}],
-      events:[{idx:4,title:"West Village Food Tour",date:"10",month:"MAY",going:8}] },
-    { name:"Book Club", count:"7 members", img:"book_club.jpg",
+      posts:[
+        {a:"AH",u:"Unit 1512",t:"1h ago",msg:"Reminder — Soundbath this Thursday 7:30pm in the yoga studio. Come decompress!"},
+        {a:"SR",u:"Unit 0701",t:"45m ago",msg:"Can not wait. Bringing my own mat this time."},
+        {a:"MK",u:"Unit 1103",t:"20m ago",msg:"Is the Barre class still happening next Tuesday? Want to block my calendar."},
+        {a:"AH",u:"Unit 1512",t:"10m ago",msg:"Yes! Missy confirmed. 6:30pm, studio on ground floor."}
+      ],
+      events:[{idx:4,title:"Yoga",date:"12",month:"APR",going:6},{idx:1,title:"Barre",date:"05",month:"MAY",going:1},{idx:2,title:"HIIT Class",date:"02",month:"MAY",going:2},{idx:3,title:"Zumba",date:"30",month:"APR",going:5},{idx:6,title:"Soundbath",date:"19",month:"MAR",going:12}] },
+    { name:"Book Club", count:"7 members", img:"book_club_event.jpg",
       members:[
         {a:"SR",u:"Unit 0701",role:"Organiser"},
         {a:"KR",u:"Unit 0814",role:""},
@@ -671,8 +664,34 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
         {a:"MD",u:"Unit 2003",role:""},
         {a:"PL",u:"Unit 0605",role:""}
       ],
-      posts:[{a:"SR",u:"Unit 0701",t:"3h ago",msg:"Next meeting is May 10th in the lounge, 7pm. We are doing Demon Copperhead by Barbara Kingsolver."},{a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already halfway through, it is so good. See you all there."},{a:"AH",u:"Unit 1512",t:"1h ago",msg:"Should we do a wine and cheese thing while we discuss? I can bring a bottle."}],
-      events:[{idx:5,title:"Book Club: Demon Copperhead",date:"10",month:"MAY",going:7},{idx:5,title:"Book Club — In a Secret Place",date:"27",month:"MAY",going:7}] }
+      posts:[
+        {a:"SR",u:"Unit 0701",t:"3h ago",msg:"Secret location confirmed for May 27! RSVP so I can send you the details."},
+        {a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already finished the book. No spoilers but wow."},
+        {a:"AH",u:"Unit 1512",t:"1h ago",msg:"Should we do wine and cheese again? Last time was so good."},
+        {a:"SR",u:"Unit 0701",t:"30m ago",msg:"Absolutely. Bring your ideas for next month pick too!"}
+      ],
+      events:[{idx:0,title:"Book Club — In a Secret Place",date:"27",month:"MAY",going:7}] },
+    { name:"Game & Social", count:"11 members", img:"game_night.jpg",
+      members:[
+        {a:"JL",u:"Unit 2014",role:"Organiser"},
+        {a:"MK",u:"Unit 1103",role:""},
+        {a:"TW",u:"Unit 0208",role:""},
+        {a:"AL",u:"Unit 1901",role:""},
+        {a:"JS",u:"Unit 1108",role:""},
+        {a:"MD",u:"Unit 2003",role:""},
+        {a:"KR",u:"Unit 0814",role:""},
+        {a:"TN",u:"Unit 1502",role:""},
+        {a:"PL",u:"Unit 0605",role:""},
+        {a:"SR",u:"Unit 0701",role:""},
+        {a:"AH",u:"Unit 1512",role:""}
+      ],
+      posts:[
+        {a:"JL",u:"Unit 2014",t:"2h ago",msg:"Game Night is back Feb 25th! 25th floor parlor. We have Codenames, Ticket to Ride, and Settlers. Who is in?"},
+        {a:"MK",u:"Unit 1103",t:"1h ago",msg:"I am bringing Exploding Kittens. Things will get chaotic."},
+        {a:"TW",u:"Unit 0208",t:"45m ago",msg:"Last Super Bowl watch party was so fun. We have to do another one next season."},
+        {a:"AL",u:"Unit 1901",t:"20m ago",msg:"Agreed. The snack spread alone was worth it."}
+      ],
+      events:[{idx:7,title:"Super Bowl LX Watch Party",date:"08",month:"FEB",going:35},{idx:8,title:"Game Night",date:"25",month:"FEB",going:20}] }
   ];
 
   const postData = {
@@ -715,24 +734,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       '<div class="detail-event-meta-row">📍 <strong>' + d.location + '</strong></div>';
     document.getElementById('detail-event-desc').textContent = d.desc;
         document.getElementById('detail-event-count').textContent = d.attendees.length + ' going';
-    var gl = document.getElementById('detail-event-group-link');
-    if (!gl) {
-      gl = document.createElement('div');
-      gl.id = 'detail-event-group-link';
-      document.getElementById('detail-event-join-btn').after(gl);
-    }
-    if (d.group) {
-      gl.style.cssText = 'font-size:11px;color:#999;padding:12px 0;border-top:1px solid #e8e8e8;margin-top:12px;';
-      gl.innerHTML = 'Organised by ';
-      var span = document.createElement('span');
-      span.textContent = d.group;
-      span.style.cssText = 'color:#111;font-weight:700;cursor:pointer;text-decoration:underline;';
-      span.setAttribute('data-group-idx', d.groupIdx);
-      span.onclick = function() { closeDetail('detail-event'); openGroupDetail(parseInt(this.getAttribute('data-group-idx'))); };
-      gl.appendChild(span);
-    } else {
-      gl.innerHTML = '';
-    }
+
 
     var att = document.getElementById('detail-event-attendees');
     att.innerHTML = d.attendees.map(function(a) {
