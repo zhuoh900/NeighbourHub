@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MYBUILDING</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>STOOP — Your Building Community</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,10 +45,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .lp-h1 { font-size: clamp(52px, 9vw, 110px); font-weight: 700; line-height: 0.92; letter-spacing: -3px; color: var(--white); margin-top: 24px; }
 .lp-h1 em { font-style: normal; text-decoration: none; }
 .lp-ctas { display: flex; gap: 0; }
-.lp-btn-fill { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: 2px solid var(--white); padding: 14px 28px; cursor: pointer; background: var(--black); color: var(--white); transition: background 0.15s; }
+.lp-btn-enter { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: transparent; border: none; color: var(--white); padding: 0; cursor: pointer; opacity: 0.85; transition: opacity 0.15s; align-self: flex-start; }
+.lp-btn-enter:hover { opacity: 1; }
 .lp-btn-fill:hover { background: #333; }
-.lp-btn-out { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: 2px solid var(--white); border-left: none; padding: 14px 28px; cursor: pointer; background: var(--white); color: var(--black); transition: background 0.15s; }
-.lp-btn-out:hover { background: #e8e8e8; }
+
+
+
 
 /* ── DASHBOARD ── */
 #dashboard { display: none; padding-top: 56px; }
@@ -65,39 +67,40 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 
 /* ── SECTIONS ── */
 .section-wrap { padding: 64px; border-top: var(--line); }
-.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; padding-bottom: 16px; border-bottom: var(--line); }
 .section-title-box { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
 
-/* ── MARKETPLACE LIST ── */
-.market-grid { display: flex; flex-direction: column; }
-.market-card { display: flex; align-items: center; gap: 24px; padding: 20px 0; border-bottom: var(--line); cursor: pointer; transition: background 0.1s; }
-.market-card:first-child { border-top: var(--line); }
-.market-card:hover { background: var(--gray); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
-.market-img { width: 80px; height: 80px; flex-shrink: 0; overflow: hidden; background: var(--gray); }
-.market-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.market-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.market-name { font-size: 15px; font-weight: 700; }
+/* ── MARKETPLACE GRID — big image style ── */
+.market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+.market-card { cursor: pointer; display: flex; flex-direction: column; }
+.market-card:hover .market-img img { transform: scale(1.02); }
+.market-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; background: #f0ede8; }
+.market-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.market-body { padding: 12px 0 0; display: flex; flex-direction: column; gap: 3px; }
+.market-seller { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #999; }
+.market-name { font-size: 13px; font-weight: 400; color: var(--black); line-height: 1.4; }
+.market-meta-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+.market-price { font-size: 13px; font-weight: 400; color: var(--black); }
+.market-condition { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+.market-desc { display: none; }
 
-.market-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
-
-.market-price { font-size: 15px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
-
-/* ── EVENTS LIST ── */
-.events-grid { display: flex; flex-direction: column; }
-.event-card { display: flex; align-items: center; gap: 32px; padding: 20px 0; border-bottom: var(--line); cursor: pointer; transition: background 0.1s; }
-.event-card:first-child { border-top: var(--line); }
-.event-card:hover { background: var(--gray); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
-.event-date-box { width: 80px; height: 80px; flex-shrink: 0; overflow: hidden; position: relative; background: var(--black); display: flex; align-items: flex-end; padding: 6px 8px; }
-.event-date-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-.event-date-inner { position: relative; z-index: 1; color: var(--white); line-height: 1; }
-.event-date-num { font-size: 22px; font-weight: 700; letter-spacing: -1px; }
-.event-date-info { font-size: 9px; font-weight: 700; letter-spacing: 1px; opacity: 0.8; }
-.event-body { flex: 1; }
-.event-title { font-size: 15px; font-weight: 700; }
+/* ── EVENTS GRID — big image style ── */
+.events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 32px; }
+.event-card { cursor: pointer; display: flex; flex-direction: column; }
+.event-card:hover .event-date-box img { transform: scale(1.02); }
+.event-date-box { width: 100%; aspect-ratio: 3/4; position: relative; overflow: hidden; background: #1a1a1a; display: flex; align-items: flex-end; padding: 20px; }
+.event-date-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.65; transition: transform 0.5s ease; }
+.event-date-inner { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 8px; color: var(--white); }
+.event-date-num { font-size: 44px; font-weight: 700; letter-spacing: -2px; line-height: 1; }
+.event-date-info { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.event-date-time { font-size: 10px; opacity: 0.75; margin-top: 2px; }
+.event-body { padding: 12px 0 0; flex: 1; }
+.event-title { font-size: 13px; font-weight: 700; color: var(--black); line-height: 1.3; margin-bottom: 3px; }
+.event-group-tag { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
 .event-desc { display: none; }
-.event-foot { margin-left: auto; }
-.join-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: var(--line); background: var(--white); padding: 8px 16px; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-.join-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+.event-foot { padding: 10px 0 0; }
+.join-btn { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: transparent; color: var(--text-muted); padding: 0; cursor: pointer; transition: color 0.15s; }
+.join-btn:hover { color: var(--black); }
 
 /* ── GROUPS LIST ── */
 .groups-grid { display: flex; flex-direction: column; }
@@ -115,23 +118,97 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+  /* Nav */
   nav { padding: 0 20px; gap: 0; }
   .nav-links, .nav-actions { display: none; }
   .hamburger { display: block; }
+  .nav-logo { font-size: 14px; padding: 0 16px; }
 
-  .lp-hero { padding: 32px 24px; }
-  .lp-h1 { font-size: 40px; letter-spacing: -1.5px; }
-  .lp-ctas { flex-direction: column; }
-  .lp-btn-out { border-left: 2px solid var(--white); border-top: none; }
+  /* Mobile menu */
+  .mobile-menu { padding: 16px 24px; }
+  .mobile-menu a { font-size: 22px; padding: 18px 0; }
 
-  .dash-hero { padding: 40px 24px; }
-  .dash-stats { gap: 28px; }
+  /* Landing hero */
+  .lp-hero { padding: 32px 24px; min-height: 100svh; }
+  .lp-h1 { font-size: clamp(36px, 10vw, 56px); letter-spacing: -2px; }
+  .lp-ctas { flex-direction: column; gap: 0; }
+  .lp-btn-fill { font-size: 12px; padding: 16px 24px; text-align: center; }
+  .lp-btn-out { border-left: 2px solid var(--white); border-top: none; font-size: 12px; padding: 16px 24px; text-align: center; }
 
-  .section-wrap { padding: 40px 24px; }
+  /* Dashboard hero */
+  .dash-hero { padding: 40px 24px 32px; min-height: 280px; }
+  .dash-h { font-size: clamp(28px, 8vw, 44px); letter-spacing: -1.5px; margin-bottom: 0; }
+  .dash-stats { gap: 24px; margin-top: 24px; }
+  .ds-n { font-size: 24px; }
+  .ds-l { font-size: 9px; }
 
-  .market-card:hover,
-  .event-card:hover,
+  /* Sections */
+  .section-wrap { padding: 32px 20px; }
+  .section-head { margin-bottom: 24px; }
+  .section-title-box { font-size: 10px; padding: 14px 20px; }
+
+  /* Marketplace */
+  .market-card { gap: 16px; padding: 16px 0; }
+  .market-img { width: 64px; height: 64px; }
+  .market-name { font-size: 14px; }
+  .market-price { font-size: 14px; }
+  .market-desc { display: none; }
+  .market-card:hover { margin: 0; padding-left: 0; padding-right: 0; background: transparent; }
+
+  /* Events */
+  .event-card { gap: 16px; padding: 16px 0; }
+  .event-date-box { width: 64px; height: 64px; padding: 6px 8px; }
+  .event-date-num { font-size: 18px; }
+  .event-date-info { font-size: 9px; }
+  .event-title { font-size: 14px; }
+  .event-foot { padding: 12px 0; }
+  .join-btn { font-size: 10px; padding: 6px 12px; }
+  .event-card:hover { margin: 0; padding-left: 0; padding-right: 0; background: transparent; }
+
+  /* Groups */
+  .group-card { gap: 16px; padding: 16px 0; }
+  .group-card img { width: 64px; height: 64px; }
+  .group-name { font-size: 14px; }
+  .group-count { font-size: 10px; }
+  .group-join { font-size: 10px; padding: 6px 12px; }
   .group-card:hover { margin: 0; padding-left: 0; padding-right: 0; background: transparent; }
+
+  /* Discussion */
+  .post-card { gap: 12px; padding: 16px 0; }
+  .post-avatar { width: 34px; height: 34px; font-size: 11px; flex-shrink: 0; }
+  .post-title { font-size: 13px; }
+  .post-preview { font-size: 11px; }
+  .post-replies { font-size: 10px; }
+  .post-time { font-size: 10px; }
+  .post-card:hover { margin: 0; padding-left: 0; padding-right: 0; background: transparent; }
+  .new-post-bar { gap: 10px; margin-bottom: 28px; }
+  .new-post-input { font-size: 13px; }
+  .new-post-btn { font-size: 10px; padding: 10px 14px; }
+
+  /* Detail pages */
+  .detail-nav { padding: 0 20px; }
+  .detail-body { padding: 28px 20px; }
+  .detail-img { height: 240px; }
+  .detail-title { font-size: 18px; }
+  .detail-price { font-size: 18px; }
+  .detail-desc { font-size: 13px; }
+  .detail-action { font-size: 12px; padding: 13px; }
+  .detail-event-img { height: 200px; }
+  .detail-event-date { font-size: 36px; margin-top: 24px; }
+  .detail-group-img { height: 180px; }
+  .detail-tab { font-size: 10px; padding: 12px 16px; }
+  .post-detail-title { font-size: 16px; }
+  .reply-item { gap: 10px; }
+  .reply-text { font-size: 12px; }
+  .reply-input { font-size: 12px; }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .lp-h1 { font-size: 32px; letter-spacing: -1px; }
+  .dash-h { font-size: 26px; }
+  .dash-stats { gap: 16px; }
+  .ds-n { font-size: 20px; }
 }
 
 /* ── DISCUSSION ── */
@@ -163,7 +240,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .detail-body { max-width: 720px; margin: 0 auto; padding: 48px 40px; }
 
 /* Marketplace detail */
-.detail-img { width: 100%; height: 360px; object-fit: cover; display: block; margin-bottom: 32px; }
+.detail-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; margin-bottom: 32px; }
 .detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
 .detail-title { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
 .detail-price { font-size: 22px; font-weight: 700; }
@@ -183,6 +260,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .detail-event-img { width: 100%; height: 300px; object-fit: cover; display: block; }
 .detail-event-date { font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin: 32px 0 4px; }
 .detail-event-month { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+.detail-event-meta { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+.detail-event-meta-row { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+.detail-event-meta-row strong { color: var(--black); font-weight: 700; }
 .detail-attendees { margin: 24px 0; }
 .detail-attendees-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
 .attendee-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: var(--line); }
@@ -212,19 +292,46 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 .reply-input::placeholder { color: var(--text-muted); }
 .reply-send { font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: var(--black); color: var(--white); padding: 10px 20px; cursor: pointer; white-space: nowrap; }
 
+
+/* ── AVATAR COLORS ── */
+.av-JL { background: #2D6A4F !important; }  /* dark green */
+.av-MK { background: #E07A5F !important; }  /* terracotta */
+.av-SR { background: #3D405B !important; }  /* indigo */
+.av-TW { background: #81B29A !important; }  /* sage */
+.av-AH { background: #F2CC8F !important; color: #333 !important; }  /* sand */
+.av-PL { background: #E9C46A !important; color: #333 !important; }  /* yellow */
+.av-KR { background: #264653 !important; }  /* dark teal */
+.av-MD { background: #A8DADC !important; color: #333 !important; }  /* sky */
+.av-JS { background: #C77DFF !important; }  /* purple */
+.av-AL { background: #F4A261 !important; color: #333 !important; }  /* orange */
+.av-TN { background: #457B9D !important; }  /* steel blue */
+.av-ME { background: #606C38 !important; }  /* olive */
+
+
+/* ── GALLERY ── */
+.detail-gallery { position: relative; }
+.gallery-btn { position: absolute; top: 50%; transform: translateY(-50%); background: transparent; border: none; width: 40px; height: 40px; font-size: 22px; cursor: pointer; display: none; align-items: center; justify-content: center; color: var(--white); z-index: 2; text-shadow: 0 1px 4px rgba(0,0,0,0.4); transition: opacity 0.15s; }
+.gallery-btn:hover { opacity: 0.7; }
+.gallery-prev { left: 12px; }
+.gallery-next { right: 12px; }
+.detail-gallery:hover .gallery-btn { display: flex; }
+.gallery-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+.gallery-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.15s; border: none; padding: 0; }
+.gallery-dot.active { background: #fff; }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="showLogin()">MYBUILDING</div>
+  <div class="nav-logo" onclick="showLogin()">STOOP</div>
   <ul class="nav-links">
     <li><a href="#" onclick="gotoSection('marketplace'); return false;">Browse Listing</a></li>
     <li><a href="#" onclick="gotoSection('events'); return false;">Events</a></li>
     <li><a href="#" onclick="gotoSection('groups'); return false;">Groups</a></li>
   </ul>
-  <div class="nav-actions" id="navActions"></div>
+  <div class="nav-actions" id="navActions"><button class="btn-login" onclick="showLogin2()">Log in</button></div>
   <button class="hamburger" onclick="toggleMenu()">☰</button>
 </nav>
 
@@ -232,7 +339,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
   <a href="#" onclick="gotoSection('marketplace');toggleMenu()">Browse Listing</a>
   <a href="#" onclick="gotoSection('events');toggleMenu()">Events</a>
   <a href="#" onclick="gotoSection('groups');toggleMenu()">Groups</a>
-  <a href="#" onclick="gotoSection('discussion');toggleMenu()">Discussion</a>
   <button class="m-btn" onclick="showDashboard();toggleMenu()">Get started →</button>
 </div>
 
@@ -241,9 +347,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
   <div class="lp-hero">
     <div></div>
     <h1 class="lp-h1">Your building,<br><em>your community.</em></h1>
-    <div class="lp-ctas">
-      <button class="lp-btn-fill" onclick="showDashboard()">Enter your building →</button>
-      <button class="lp-btn-out" onclick="showDashboard()">Log in</button>
+    <button class="lp-btn-enter" onclick="showDashboard()">Enter your building →</button>
+  </div>
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;display:none;align-items:center;justify-content:center;">
+    <div style="background:#fff;padding:48px;max-width:400px;width:90%;position:relative;">
+      <button onclick="closeLoginModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;font-family:inherit;">×</button>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Log in to STOOP</div>
+      <input placeholder="Unit number (e.g. 2014)" style="width:100%;border:none;border-bottom:2px solid #111;padding:10px 0;font-family:inherit;font-size:14px;outline:none;margin-bottom:16px;display:block;">
+      <input type="password" placeholder="Password" style="width:100%;border:none;border-bottom:2px solid #111;padding:10px 0;font-family:inherit;font-size:14px;outline:none;margin-bottom:32px;display:block;">
+      <button onclick="showDashboard();closeLoginModal()" style="width:100%;padding:14px;background:#111;color:#fff;border:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Log in</button>
     </div>
   </div>
 </div>
@@ -256,9 +369,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     <div class="dash-left">
       <h1 class="dash-h">Your building,<br><em>your community</em></h1>
       <div class="dash-stats">
-        <div class="ds"><div class="ds-n">100</div><div class="ds-l">Residents</div></div>
-        <div class="ds"><div class="ds-n">10</div><div class="ds-l">Listing</div></div>
-        <div class="ds"><div class="ds-n">31</div><div class="ds-l">Groups</div></div>
+        <div class="ds"><div class="ds-n">348</div><div class="ds-l">Residents</div></div>
+        <div class="ds"><div class="ds-n" id="stat-listings">6</div><div class="ds-l">Listings</div></div>
+        <div class="ds"><div class="ds-n" id="stat-groups">3</div><div class="ds-l">Groups</div></div>
       </div>
     </div>
     <div class="dash-right" style="display:none;"></div>
@@ -270,14 +383,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="section-title-box">Community Marketplace</div>
     </div>
     <div class="market-grid">
-      <!-- ═══ MARKETPLACE PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
-      <!-- ═══ MARKETPLACE: 换掉下面每行 img src="..." 里的链接 ═══ -->
-      <div class="market-card" onclick="openMarketDetail(0)" style="cursor:pointer;"><div class="market-img"><img src="Sofa.jpeg" alt="Mid-century sofa"></div><div class="market-body"><div class="market-name">Article Sven sofa, 73in</div><div class="market-price">$250</div></div></div>
-      <div class="market-card" onclick="openMarketDetail(1)" style="cursor:pointer;"><div class="market-img"><img src="mountain_bike.jpg" alt="Mountain bike"></div><div class="market-body"><div class="market-name">Trek Marlin, barely ridden</div><div class="market-price">$320</div></div></div>
-      <div class="market-card" onclick="openMarketDetail(2)" style="cursor:pointer;"><div class="market-img"><img src="design_book.jpg" alt="Design books"></div><div class="market-body"><div class="market-name">Design books, 8 titles</div><div class="market-price">$35</div></div></div>
-      <div class="market-card" onclick="openMarketDetail(3)" style="cursor:pointer;"><div class="market-img"><img src="ninetendoswithch.jpg" alt="Nintendo Switch"></div><div class="market-body"><div class="market-name">Nintendo Switch + 4 games</div><div class="market-price">$180</div></div></div>
-      <div class="market-card" onclick="openMarketDetail(4)" style="cursor:pointer;"><div class="market-img"><img src="plant.jpg" alt="Monstera plant"></div><div class="market-body"><div class="market-name">Monstera deliciosa, 3ft</div><div class="market-price">$40</div></div></div>
-      <div class="market-card" onclick="openMarketDetail(5)" style="cursor:pointer;"><div class="market-img"><img src="pot.jpg" alt="Le Creuset pot"></div><div class="market-body"><div class="market-name">Le Creuset 5qt dutch oven</div><div class="market-price">$95</div></div></div>
+      <div class="market-card" onclick="openMarketDetail(0)"><div class="market-img"><img src="sofa.jpg" alt="Sofa"></div><div class="market-body"><div class="market-seller">Unit 2014</div><div class="market-name">Gray 3-Seat Sofa</div><div class="market-meta-row"><div class="market-price">$15</div><div class="market-condition">Like new</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(1)"><div class="market-img"><img src="bike.jpg" alt="Mountain bike"></div><div class="market-body"><div class="market-seller">Unit 1205</div><div class="market-name">Trek Fuel Ex 8 Full Suspension</div><div class="market-meta-row"><div class="market-price">$2,200</div><div class="market-condition">Like new</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(2)"><div class="market-img"><img src="books.jpg" alt="Star Wars books"></div><div class="market-body"><div class="market-seller">Unit 0703</div><div class="market-name">Star Wars Collectors Book Bundle</div><div class="market-meta-row"><div class="market-price">$20</div><div class="market-condition">Like new</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(3)"><div class="market-img"><img src="nintendo_switch.jpg" alt="Nintendo Switch"></div><div class="market-body"><div class="market-seller">Unit 0319</div><div class="market-name">Nintendo Switch OLED Console</div><div class="market-meta-row"><div class="market-price">$102</div><div class="market-condition">Like new</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(4)"><div class="market-img"><img src="monstera.jpg" alt="Monstera plant"></div><div class="market-body"><div class="market-seller">Unit 0902</div><div class="market-name">Monstera Deliciosa</div><div class="market-meta-row"><div class="market-price">$22</div><div class="market-condition">New</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(5)"><div class="market-img"><img src="dinnerware.jpg" alt="IKEA dinnerware"></div><div class="market-body"><div class="market-seller">Unit 0611</div><div class="market-name">IKEA Dinnerware Set</div><div class="market-meta-row"><div class="market-price">$25</div><div class="market-condition">Good</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(6)"><div class="market-img"><img src="cat_helmet.jpg" alt="Cat helmet"></div><div class="market-body"><div class="market-seller">Unit 1108</div><div class="market-name">3D Printed Roman Cat Helmet</div><div class="market-meta-row"><div class="market-price">$25</div><div class="market-condition">New</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(7)"><div class="market-img"><img src="support_worm.jpg" alt="Support Worm"></div><div class="market-body"><div class="market-seller">Unit 1502</div><div class="market-name">Handmade Support Worm</div><div class="market-meta-row"><div class="market-price">$40</div><div class="market-condition">New</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(8)"><div class="market-img"><img src="labyrinth_worm_4.jpg" alt="Labyrinth Worm"></div><div class="market-body"><div class="market-seller">Unit 0814</div><div class="market-name">The Worm from Labyrinth Plush</div><div class="market-meta-row"><div class="market-price">$35</div><div class="market-condition">New</div></div></div></div>
+      <div class="market-card" onclick="openMarketDetail(9)"><div class="market-img"><img src="cowboy_stool_2.jpg" alt="Cowboy Stool"></div><div class="market-body"><div class="market-seller">Unit 1901</div><div class="market-name">Cowboy Denim Jean Footstool</div><div class="market-meta-row"><div class="market-price">$125</div><div class="market-condition">Good</div></div></div></div>
     </div>
   </div>
 
@@ -289,18 +404,33 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     <div class="events-grid">
       <!-- ═══ EVENT PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
       <div class="event-card" onclick="openEventDetail(0)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="roof_top_movie.jpg" alt="Movie night"><div class="event-date-inner"><div class="event-date-num">24</div><div><div class="event-date-info">APR</div></div></div></div>
+        <div class="event-date-box"><img src="roof_top_movie.jpg" alt="Movie night"><div class="event-date-inner"><div class="event-date-num">24</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">8:00 PM</div></div></div></div>
         <div class="event-body"><div class="event-title">Rooftop Movie Night</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(1)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="garden_day.jpg" alt="Garden"><div class="event-date-inner"><div class="event-date-num">28</div><div><div class="event-date-info">APR</div></div></div></div>
+        <div class="event-date-box"><img src="garden_day.jpg" alt="Garden"><div class="event-date-inner"><div class="event-date-num">28</div><div><div class="event-date-info">APR 2026</div><div class="event-date-time">10:00 AM</div></div></div></div>
         <div class="event-body"><div class="event-title">Community Garden Day</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
       <div class="event-card" onclick="openEventDetail(2)" style="cursor:pointer;">
-        <div class="event-date-box"><img src="bake_off.jpg" alt="Baking"><div class="event-date-inner"><div class="event-date-num">05</div><div><div class="event-date-info">MAY</div></div></div></div>
+        <div class="event-date-box"><img src="bake_off.jpg" alt="Baking"><div class="event-date-inner"><div class="event-date-num">05</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">3:00 PM</div></div></div></div>
         <div class="event-body"><div class="event-title">Bake-off Competition</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
+      <div class="event-card" onclick="openEventDetail(3)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="morning_runners.jpg" alt="Run"><div class="event-date-inner"><div class="event-date-num">03</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">7:00 AM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Saturday Morning Run</div><div class="event-group-tag">Morning Runners</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
+      <div class="event-card" onclick="openEventDetail(4)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="food_collective.jpg" alt="Food tour"><div class="event-date-inner"><div class="event-date-num">10</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">6:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">West Village Food Tour</div><div class="event-group-tag">Foodie Collective</div></div>
+        <div class="event-foot"><button class="join-btn">Join →</button></div>
+      </div>
+      <div class="event-card" onclick="openEventDetail(5)" style="cursor:pointer;">
+        <div class="event-date-box"><img src="book_club.jpg" alt="Book club"><div class="event-date-inner"><div class="event-date-num">10</div><div><div class="event-date-info">MAY 2026</div><div class="event-date-time">7:00 PM</div></div></div></div>
+        <div class="event-body"><div class="event-title">Book Club: Demon Copperhead</div><div class="event-group-tag">Book Club</div></div>
         <div class="event-foot"><button class="join-btn">Join →</button></div>
       </div>
     </div>
@@ -312,73 +442,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
       <div class="section-title-box">Interest Groups</div>
     </div>
     <div class="groups-grid">
-      <!-- ═══ GROUP PHOTOS: 把 src 换成你的图片路径或URL ═══ -->
-      <div class="group-card" onclick="openGroupDetail(0)" style="cursor:pointer;"><img src="morning_runners.jpg" alt="Running"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Morning Runners</div><div class="group-count">24 members</div></div><button class="group-join">Join →</button></div></div>
-      <div class="group-card" onclick="openGroupDetail(1)" style="cursor:pointer;"><img src="food_collective.jpg" alt="Food"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Foodie Collective</div><div class="group-count">31 members</div></div><button class="group-join">Join →</button></div></div>
-      <div class="group-card" onclick="openGroupDetail(2)" style="cursor:pointer;"><img src="book_club.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">18 members</div></div><button class="group-join">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(0)" style="cursor:pointer;"><img src="morning_runners.jpg" alt="Running"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Morning Runners</div><div class="group-count">9 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(1)" style="cursor:pointer;"><img src="food_collective.jpg" alt="Food"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Foodie Collective</div><div class="group-count">4 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
+      <div class="group-card" onclick="openGroupDetail(2)" style="cursor:pointer;"><img src="book_club.jpg" alt="Books"><div class="group-overlay"></div><div class="group-info"><div><div class="group-name">Book Club</div><div class="group-count">7 members</div></div><button class="group-join" onclick="event.stopPropagation();toggleGroupJoinCard(this)">Join →</button></div></div>
     </div>
   </div>
 
 
 
 
-  <!-- DISCUSSION -->
-  <div class="section-wrap" id="discussion">
-    <div class="section-head" style="margin-bottom:32px;">
-      <div class="section-title-box">Discussion</div>
-    </div>
-    <div class="new-post-bar">
-      <input class="new-post-input" type="text" placeholder="Start a new discussion..." id="newPostInput">
-      <button class="new-post-btn" onclick="submitPost()">Post →</button>
-    </div>
-    <div class="discussion-list" id="discussionList">
-      <div class="post-card">
-        <div class="post-avatar">JL</div>
-        <div class="post-body">
-          <div class="post-meta">Unit 2014</div>
-          <div class="post-title">Anyone know a good plumber?</div>
-          <div class="post-preview">My bathroom sink has been leaking for a week. Looking for recommendations from anyone who's had work done recently.</div>
-        </div>
-        <div class="post-right"><div class="post-replies">12 replies</div><div class="post-time">2h ago</div></div>
-      </div>
-      <div class="post-card">
-        <div class="post-avatar">MK</div>
-        <div class="post-body">
-          <div class="post-meta">Unit 1103</div>
-          <div class="post-title">Noise complaint — 3rd floor hallway</div>
-          <div class="post-preview">Has anyone else noticed the loud music coming from apt 3F on weekends? Would love to sort this out without involving management.</div>
-        </div>
-        <div class="post-right"><div class="post-replies">8 replies</div><div class="post-time">5h ago</div></div>
-      </div>
-      <div class="post-card">
-        <div class="post-avatar">SR</div>
-        <div class="post-body">
-          <div class="post-meta">Unit 0701</div>
-          <div class="post-title">Lost cat — orange tabby, answers to Mochi</div>
-          <div class="post-preview">She got out yesterday evening through the stairwell door. Please DM me if you spot her. Reward offered.</div>
-        </div>
-        <div class="post-right"><div class="post-replies">24 replies</div><div class="post-time">1d ago</div></div>
-      </div>
-      <div class="post-card">
-        <div class="post-avatar">TW</div>
-        <div class="post-body">
-          <div class="post-meta">Unit 0208</div>
-          <div class="post-title">Rooftop access hours — can we extend?</div>
-          <div class="post-preview">The rooftop closes at 10pm but the summer sunsets are too good to miss. Should we petition building management to extend hours?</div>
-        </div>
-        <div class="post-right"><div class="post-replies">31 replies</div><div class="post-time">2d ago</div></div>
-      </div>
-      <div class="post-card">
-        <div class="post-avatar">AH</div>
-        <div class="post-body">
-          <div class="post-meta">Unit 1512</div>
-          <div class="post-title">Package deliveries piling up in lobby</div>
-          <div class="post-preview">There are about 15 uncollected packages in the lobby. Could everyone check if theirs is there? Getting hard to walk through.</div>
-        </div>
-        <div class="post-right"><div class="post-replies">6 replies</div><div class="post-time">3d ago</div></div>
-      </div>
-    </div>
-  </div>
+
 
 
 <!-- ══ DETAIL PAGES ══ -->
@@ -390,10 +463,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     <span class="detail-nav-title" id="detail-market-title"></span>
   </div>
   <div class="detail-body">
-    <img class="detail-img" id="detail-market-img" src="" alt="">
+    <div class="detail-gallery" id="detail-gallery">
+      <img class="detail-img" id="detail-market-img" src="" alt="">
+      <button class="gallery-btn gallery-prev" id="gallery-prev" onclick="galleryNav(-1)">&#8592;</button>
+      <button class="gallery-btn gallery-next" id="gallery-next" onclick="galleryNav(1)">&#8594;</button>
+      <div class="gallery-dots" id="gallery-dots"></div>
+    </div>
     <div class="detail-header">
       <div class="detail-title" id="detail-market-name"></div>
-      <div class="detail-price" id="detail-market-price"></div>
+      <div style="text-align:right;"><div class="detail-price" id="detail-market-price"></div><div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-top:2px;" id="detail-market-condition"></div></div>
     </div>
     <div class="detail-desc" id="detail-market-desc"></div>
     <div class="detail-seller">
@@ -418,6 +496,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     <img class="detail-event-img" id="detail-event-img" src="" alt="">
     <div class="detail-event-date" id="detail-event-date"></div>
     <div class="detail-event-month" id="detail-event-month"></div>
+    <div class="detail-event-meta" id="detail-event-meta"></div>
     <div class="detail-desc" id="detail-event-desc"></div>
     <button class="detail-action detail-action-primary" id="detail-event-join-btn" onclick="toggleJoin(this)">Join this event</button>
     <div class="detail-attendees">
@@ -444,9 +523,21 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     </div>
     <div class="detail-tabs">
       <button class="detail-tab active" onclick="switchTab('members')">Members</button>
+      <button class="detail-tab" onclick="switchTab('discussion')">Discussion</button>
+      <button class="detail-tab" onclick="switchTab('events')">Events</button>
     </div>
     <div class="tab-content active" id="tab-members">
       <div id="detail-group-members"></div>
+    </div>
+    <div class="tab-content" id="tab-discussion">
+      <div class="new-post-bar" style="margin-top:8px;">
+        <input class="new-post-input" type="text" placeholder="Post to this group..." id="groupPostInput">
+        <button class="new-post-btn" onclick="submitGroupPost()">Post →</button>
+      </div>
+      <div id="detail-group-posts"></div>
+    </div>
+    <div class="tab-content" id="tab-events">
+      <div id="detail-group-events"></div>
     </div>
   </div>
 </div>
@@ -477,30 +568,67 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
 
 <script>
   const marketItems = [
-    { name:"Article Sven sofa, 73in charcoal", price:"$250", img:"Sofa.jpeg", desc:"Bought 2 years ago, no pets or smoke. Moving end of month, must go. In great shape, only minor wear on armrest. Can help carry to elevator.", avatar:"JL", unit:"Unit 2014", time:"2 days ago" },
-    { name:"Trek Marlin, barely ridden", price:"$320", img:"mountain_bike.jpg", desc:"Got it last spring, used maybe 10 times total. Comes with U-lock and helmet. One small scuff on frame. Cash only, lobby pickup preferred.", avatar:"MK", unit:"Unit 1205", time:"1 day ago" },
-    { name:"Design books, 8 titles incl. IDEO", price:"$35", img:"design_book.jpg", desc:"Clearing out shelves before moving. Includes IDEO Field Guide, Grid Systems by Muller-Brockmann, Thinking with Type, and 5 others. All in great shape, no writing inside.", avatar:"SR", unit:"Unit 0703", time:"3 days ago" },
-    { name:"Nintendo Switch + 4 games", price:"$180", img:"ninetendoswithch.jpg", desc:"Includes Mario Kart 8, Zelda BotW, Stardew Valley, Hollow Knight. One small scratch on screen, no effect on gameplay. Charger and original box included.", avatar:"TW", unit:"Unit 0319", time:"4 hours ago" },
-    { name:"Monstera deliciosa, 3ft, healthy", price:"$40", img:"plant.jpg", desc:"Been growing for 2 years, lots of fenestration developing nicely. Currently in a 10in nursery pot. Happy to give care tips.", avatar:"AH", unit:"Unit 0902", time:"5 days ago" },
-    { name:"Le Creuset 5qt dutch oven, flame", price:"$95", img:"pot.jpg", desc:"Retail $400+. Used maybe a dozen times. Tiny chip on inside rim, fully functional. Perfect for soups, braises, bread. Pickup from lobby only.", avatar:"PL", unit:"Unit 0611", time:"1 week ago" }
+    { name:"Gray 3-Seat Sofa", condition:"Like new", price:"$15", img:"sofa.jpg", imgs:["sofa.jpg","sofa_2.jpg"], desc:"Stylish gray upholstered sofa in great condition. Neutral color goes with everything, clean lines perfect for apartments. Cushions are supportive and comfortable. Color: Medium gray. Seats 3 comfortably. Removable seat cushions. Width: ~80 inches. Third floor walk up.", avatar:"JL", unit:"Unit 2014", time:"1 week ago" },
+    { name:"Trek Fuel Ex 8 Full Suspension MTB", condition:"Like new", price:"$2,200", img:"bike.jpg", imgs:["bike.jpg","bike_2.jpg","bike_3.jpg"], desc:"Trek Fuel Ex 8 full suspension with Fox shocks and Shimano shifter. Used only 3-4 rides before switching to electric. Red and black fade, nearly a 2023. Brand new condition and ready to roll. Fits 5ft10 to 6ft2. Door pickup only.", avatar:"MK", unit:"Unit 1205", time:"8 hours ago" },
+    { name:"Star Wars Collectors Book Bundle", condition:"Like new", price:"$20", img:"books.jpg", imgs:["books.jpg","books_2.jpg"], desc:"5 book bundle with collector R2-D2 tin box. Includes 5-Minute Star Wars Stories hardcover and 4 DK Star Wars reader books (Level 2). Great short bedtime stories for young Star Wars fans. Age group 4-11. Fiction, Action and Adventure.", avatar:"SR", unit:"Unit 0703", time:"1 week ago" },
+    { name:"Nintendo Switch OLED Console", condition:"Like new", price:"$102", img:"nintendo_switch.jpg", desc:"Mint condition Nintendo Switch OLED. Never been played handheld, always in the dock. Used literally a few times only. Comes with everything as if brand new. Public meetup or door pickup. Device ID: J7N2-FQ.", avatar:"TW", unit:"Unit 0319", time:"2 days ago" },
+    { name:"Monstera Deliciosa (Swiss Cheese Plant)", condition:"New", price:"$22", img:"monstera.jpg", imgs:["monstera.jpg","monstera_2.jpg"], desc:"Monstera Deliciosa — $22, 2 available. Healthy and growing well. Perfect for bright indirect light. Easy to care for, great starter plant or addition to any collection.", avatar:"AH", unit:"Unit 0902", time:"12 weeks ago" },
+    { name:"IKEA Dinnerware Set", condition:"Good", price:"$25", img:"dinnerware.jpg", imgs:["dinnerware.jpg","dinnerware_2.jpg","dinnerware_3.jpg"], desc:"Modern IKEA stoneware dish set in neutral beige/cream. Includes 6 large dinner plates, 6 smaller salad/dessert plates, and 6 bowls. Dishwasher safe. A few chips visible in pics. Selling because we switched to a different set. $25 OBO.", avatar:"PL", unit:"Unit 0611", time:"7 weeks ago" },
+    { name:"3D Printed Roman Cat Helmet", condition:"New", price:"$25", img:"cat_helmet.jpg", imgs:["cat_helmet.jpg","cat_helmet_2.jpg","cat_helmet_3.jpg"], desc:"3D printed Roman-style cat helmet for your pet. Lightweight and durable, designed for photos and special occasions. Comes in gray. Hilarious and eye-catching. Public meetup or door pickup.", avatar:"JS", unit:"Unit 1108", time:"3 weeks ago" },
+    { name:"Handmade Support Worm", condition:"New", price:"$40", img:"support_worm.jpg", imgs:["support_worm.jpg","support_worm_2.jpg"], desc:"Someone once said, for when nothing else works. That kind of stuck with me. So I made this little guy. He is not here to fix your problems. Just here to sit with you through them. We all need something like that sometimes. Customization available. Ships for $9.09.", avatar:"TN", unit:"Unit 1502", time:"1 week ago" },
+    { name:"The Worm from Labyrinth Plush", condition:"New", price:"$35", img:"labyrinth_worm_4.jpg", imgs:["labyrinth_worm_4.jpg","labyrinth_worm_2.jpg","labyrinth_worm_3.jpg"], desc:"Official Toy Vault plush from Jim Henson's Labyrinth movie. Brand new with original tags. The Worm lives among the twists and turns of the Labyrinth, sipping tea and keeping lost travellers from taking a wrong turn. A classic piece for any Labyrinth fan.", avatar:"KR", unit:"Unit 0814", time:"1 week ago" },
+    { name:"Cowboy Denim Jean Footstool", condition:"Good", price:"$125", img:"cowboy_stool_2.jpg", imgs:["cowboy_stool_2.jpg"], desc:"Jean cowboy foot stool — not stable enough to be a chair but god isn't it cute. Made from stuffed denim jeans with cowboy boots attached. Perfect statement piece. Pickup from Unit 1901, lobby meetup works too.", avatar:"AL", unit:"Unit 1901", time:"3 days ago" }
   ];
 
   const eventItems = [
-    { title:"Rooftop Movie Night", date:"24", month:"APR", img:"roof_top_movie.jpg", desc:"Bring a blanket and join us on the rooftop for a screening. Popcorn and drinks provided. Movie TBD by vote. Starts at sundown around 8pm.", count:24, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"AH",u:"Unit 1512"}] },
-    { title:"Community Garden Day", date:"28", month:"APR", img:"garden_day.jpg", desc:"Planting tomatoes, herbs, and wildflowers in the courtyard planters. No experience needed. Gloves and tools provided, just show up.", count:16, attendees:[{a:"PL",u:"Unit 0605"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"},{a:"JS",u:"Unit 1108"}] },
-    { title:"Bake-off Competition", date:"05", month:"MAY", img:"bake_off.jpg", desc:"Show off your baking skills. Prizes for best cake, best cookie, and most creative. Drop off entries in the lounge by 2:30pm. Judging at 3pm.", count:38, attendees:[{a:"AL",u:"Unit 1901"},{a:"JL",u:"Unit 2014"},{a:"TN",u:"Unit 1502"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"}] }
+    { title:"Rooftop Movie Night", date:"24", month:"APR", img:"roof_top_movie.jpg", desc:"Bring a blanket and join us on the rooftop for a screening. Popcorn and drinks provided. Movie TBD by vote. Starts at sundown around 8pm.", count:24, group:null, groupIdx:null, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"},{a:"TW",u:"Unit 0208"},{a:"AH",u:"Unit 1512"}] },
+    { title:"Community Garden Day", date:"28", month:"APR", img:"garden_day.jpg", desc:"Planting tomatoes, herbs, and wildflowers in the courtyard planters. No experience needed. Gloves and tools provided, just show up.", count:16, group:null, groupIdx:null, attendees:[{a:"PL",u:"Unit 0605"},{a:"KR",u:"Unit 0814"},{a:"MD",u:"Unit 2003"},{a:"JS",u:"Unit 1108"}] },
+    { title:"Bake-off Competition", date:"05", month:"MAY", img:"bake_off.jpg", desc:"Show off your baking skills. Prizes for best cake, best cookie, and most creative. Drop off entries in the lounge by 2:30pm. Judging at 3pm.", count:38, group:null, groupIdx:null, attendees:[{a:"AL",u:"Unit 1901"},{a:"JL",u:"Unit 2014"},{a:"TN",u:"Unit 1502"},{a:"MK",u:"Unit 1103"},{a:"SR",u:"Unit 0701"}] },
+    { title:"Saturday Morning Run", date:"03", month:"MAY", img:"morning_runners.jpg", desc:"Weekly group run starting from the lobby at 7am. This week we are doing the Central Park 6-mile loop. All paces welcome, no one gets left behind.", count:12, group:"Morning Runners", groupIdx:0, attendees:[{a:"JL",u:"Unit 2014"},{a:"MK",u:"Unit 1103"},{a:"TW",u:"Unit 0208"},{a:"SR",u:"Unit 0701"}] },
+    { title:"West Village Food Tour", date:"10", month:"MAY", img:"food_collective.jpg", desc:"Foodie Collective is doing a self-guided tour of the West Village. We will hit 4 spots: tacos, ramen, natural wine bar, and gelato. Meet in lobby at 6pm.", count:19, group:"Foodie Collective", groupIdx:1, attendees:[{a:"AL",u:"Unit 1901"},{a:"PL",u:"Unit 0605"},{a:"JS",u:"Unit 1108"},{a:"MD",u:"Unit 2003"},{a:"MK",u:"Unit 1103"},{a:"TN",u:"Unit 1502"},{a:"SR",u:"Unit 0701"},{a:"KR",u:"Unit 0814"}] },
+    { title:"Book Club: Demon Copperhead", date:"10", month:"MAY", img:"book_club.jpg", desc:"Monthly meet for Book Club. This month we are reading Demon Copperhead by Barbara Kingsolver. Lounge, 7pm. Wine and cheese encouraged.", count:14, group:"Book Club", groupIdx:2, attendees:[{a:"SR",u:"Unit 0701"},{a:"KR",u:"Unit 0814"},{a:"AH",u:"Unit 1512"},{a:"JL",u:"Unit 2014"},{a:"TW",u:"Unit 0208"},{a:"MD",u:"Unit 2003"},{a:"PL",u:"Unit 0605"}] }
   ];
 
   const groupItems = [
-    { name:"Morning Runners", count:"24 members", img:"morning_runners.jpg",
-      members:[{a:"JL",u:"Unit 2014",role:"Organiser"},{a:"MK",u:"Unit 1103",role:""},{a:"TW",u:"Unit 0208",role:""},{a:"SR",u:"Unit 0701",role:""},{a:"PL",u:"Unit 0605",role:""}],
-      replies:[{a:"JL",u:"Unit 2014",t:"1h ago",msg:"Saturday 7am Central Park, who is in? Meeting at lobby at 6:45."},{a:"MK",u:"Unit 1103",t:"45m ago",msg:"I am in! See you there."},{a:"TW",u:"Unit 0208",t:"30m ago",msg:"Count me in. Should we do the 6-mile loop?"}] },
-    { name:"Foodie Collective", count:"31 members", img:"food_collective.jpg",
-      members:[{a:"AL",u:"Unit 1901",role:"Organiser"},{a:"PL",u:"Unit 0605",role:""},{a:"JS",u:"Unit 1108",role:""},{a:"MD",u:"Unit 2003",role:""}],
-      replies:[{a:"AL",u:"Unit 1901",t:"2h ago",msg:"Anyone tried that new taco spot on Varick? Had it for lunch and it is incredible."},{a:"PL",u:"Unit 0605",t:"1h ago",msg:"YES. The al pastor is legit. Go on a weekday, weekend line is brutal."}] },
-    { name:"Book Club", count:"18 members", img:"book_club.jpg",
-      members:[{a:"SR",u:"Unit 0701",role:"Organiser"},{a:"KR",u:"Unit 0814",role:""},{a:"AH",u:"Unit 1512",role:""},{a:"JL",u:"Unit 2014",role:""}],
-      replies:[{a:"SR",u:"Unit 0701",t:"3h ago",msg:"Next meeting is May 10th in the lounge, 7pm. We are doing Demon Copperhead by Barbara Kingsolver."},{a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already halfway through, it is so good. See you all there."}] }
+    { name:"Morning Runners", count:"9 members", img:"morning_runners.jpg",
+      members:[
+        {a:"JL",u:"Unit 2014",role:"Organiser"},
+        {a:"MK",u:"Unit 1103",role:""},
+        {a:"TW",u:"Unit 0208",role:""},
+        {a:"SR",u:"Unit 0701",role:""},
+        {a:"PL",u:"Unit 0605",role:""},
+        {a:"KR",u:"Unit 0814",role:""},
+        {a:"MD",u:"Unit 2003",role:""},
+        {a:"TN",u:"Unit 1502",role:""},
+        {a:"AH",u:"Unit 1512",role:""}
+      ],
+      posts:[{a:"JL",u:"Unit 2014",t:"1h ago",msg:"Saturday 7am Central Park, who is in? Meeting at lobby at 6:45."},{a:"MK",u:"Unit 1103",t:"45m ago",msg:"I am in! See you there."},{a:"TW",u:"Unit 0208",t:"30m ago",msg:"Count me in. Should we do the 6-mile loop?"}],
+      events:[{idx:3,title:"Saturday Morning Run",date:"03",month:"MAY",going:9}] },
+    { name:"Foodie Collective", count:"8 members", img:"food_collective.jpg",
+      members:[
+        {a:"AL",u:"Unit 1901",role:"Organiser"},
+        {a:"PL",u:"Unit 0605",role:""},
+        {a:"JS",u:"Unit 1108",role:""},
+        {a:"MD",u:"Unit 2003",role:""},
+        {a:"MK",u:"Unit 1103",role:""},
+        {a:"TN",u:"Unit 1502",role:""},
+        {a:"SR",u:"Unit 0701",role:""},
+        {a:"KR",u:"Unit 0814",role:""}
+      ],
+      posts:[{a:"AL",u:"Unit 1901",t:"2h ago",msg:"Anyone tried that new taco spot on Varick? Had it for lunch and it is incredible."},{a:"PL",u:"Unit 0605",t:"1h ago",msg:"YES. The al pastor is legit. Go on a weekday, weekend line is brutal."},{a:"JS",u:"Unit 1108",t:"30m ago",msg:"We should do a group dinner soon. I know a great spot in the West Village."}],
+      events:[{idx:4,title:"West Village Food Tour",date:"10",month:"MAY",going:8}] },
+    { name:"Book Club", count:"7 members", img:"book_club.jpg",
+      members:[
+        {a:"SR",u:"Unit 0701",role:"Organiser"},
+        {a:"KR",u:"Unit 0814",role:""},
+        {a:"AH",u:"Unit 1512",role:""},
+        {a:"JL",u:"Unit 2014",role:""},
+        {a:"TW",u:"Unit 0208",role:""},
+        {a:"MD",u:"Unit 2003",role:""},
+        {a:"PL",u:"Unit 0605",role:""}
+      ],
+      posts:[{a:"SR",u:"Unit 0701",t:"3h ago",msg:"Next meeting is May 10th in the lounge, 7pm. We are doing Demon Copperhead by Barbara Kingsolver."},{a:"KR",u:"Unit 0814",t:"2h ago",msg:"Already halfway through, it is so good. See you all there."},{a:"AH",u:"Unit 1512",t:"1h ago",msg:"Should we do a wine and cheese thing while we discuss? I can bring a bottle."}],
+      events:[{idx:5,title:"Book Club: Demon Copperhead",date:"10",month:"MAY",going:7}] }
   ];
 
   const postData = {
@@ -516,10 +644,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     const d = marketItems[idx];
     document.getElementById('detail-market-title').textContent = d.name;
     document.getElementById('detail-market-img').src = d.img;
+    initGallery(d.imgs || [d.img]);
     document.getElementById('detail-market-name').textContent = d.name;
     document.getElementById('detail-market-price').textContent = d.price;
+    document.getElementById('detail-market-condition').textContent = 'Condition: ' + d.condition;
     document.getElementById('detail-market-desc').textContent = d.desc;
-    document.getElementById('detail-market-avatar').textContent = d.avatar;
+    var avEl = document.getElementById('detail-market-avatar');
+    avEl.textContent = d.avatar;
+    avEl.className = 'detail-avatar av-' + d.avatar;
     document.getElementById('detail-market-unit').textContent = d.unit;
     document.getElementById('detail-market-time').textContent = d.time;
     document.getElementById('detail-market').style.display = 'block';
@@ -532,14 +664,33 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     document.getElementById('detail-event-img').src = d.img;
     document.getElementById('detail-event-date').textContent = d.date;
     document.getElementById('detail-event-month').textContent = d.month;
+    document.getElementById('detail-event-meta').innerHTML =
+      '<div class="detail-event-meta-row">📅 <strong>' + d.datetime + '</strong></div>' +
+      '<div class="detail-event-meta-row">📍 <strong>' + d.location + '</strong></div>';
     document.getElementById('detail-event-desc').textContent = d.desc;
-    document.getElementById('detail-event-count').textContent = d.count + ' going';
-    var btn = document.getElementById('detail-event-join-btn');
-    btn.textContent = 'Join this event';
-    btn.style.background = 'var(--black)';
+        document.getElementById('detail-event-count').textContent = d.attendees.length + ' going';
+    var gl = document.getElementById('detail-event-group-link');
+    if (!gl) {
+      gl = document.createElement('div');
+      gl.id = 'detail-event-group-link';
+      document.getElementById('detail-event-join-btn').after(gl);
+    }
+    if (d.group) {
+      gl.style.cssText = 'font-size:11px;color:#999;padding:12px 0;border-top:1px solid #e8e8e8;margin-top:12px;';
+      gl.innerHTML = 'Organised by ';
+      var span = document.createElement('span');
+      span.textContent = d.group;
+      span.style.cssText = 'color:#111;font-weight:700;cursor:pointer;text-decoration:underline;';
+      span.setAttribute('data-group-idx', d.groupIdx);
+      span.onclick = function() { closeDetail('detail-event'); openGroupDetail(parseInt(this.getAttribute('data-group-idx'))); };
+      gl.appendChild(span);
+    } else {
+      gl.innerHTML = '';
+    }
+
     var att = document.getElementById('detail-event-attendees');
     att.innerHTML = d.attendees.map(function(a) {
-      return '<div class="attendee-row"><div class="attendee-avatar">' + a.a + '</div><div class="attendee-unit">' + a.u + '</div></div>';
+      return '<div class="attendee-row"><div class="attendee-avatar av-' + a.a + '">' + a.a + '</div><div class="attendee-unit">' + a.u + '</div></div>';
     }).join('');
     document.getElementById('detail-event').style.display = 'block';
     window.scrollTo(0,0);
@@ -550,15 +701,55 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     document.getElementById('detail-group-title').textContent = d.name;
     document.getElementById('detail-group-img').src = d.img;
     document.getElementById('detail-group-name').textContent = d.name;
-    document.getElementById('detail-group-count').textContent = d.count;
+    document.getElementById('detail-group-count').textContent = d.members.length + ' members';
     var btn = document.getElementById('detail-group-join-btn');
     btn.textContent = 'Join group';
     btn.style.background = 'var(--black)';
     document.getElementById('detail-group-members').innerHTML = d.members.map(function(m) {
-      return '<div class="attendee-row"><div class="attendee-avatar">' + m.a + '</div><div class="attendee-unit">' + m.u + '</div>' + (m.role ? '<div style="margin-left:auto;font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">' + m.role + '</div>' : '') + '</div>';
+      return '<div class="attendee-row"><div class="attendee-avatar av-' + m.a + '">' + m.a + '</div><div class="attendee-unit">' + m.u + '</div>' + (m.role ? '<div style="margin-left:auto;font-size:10px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">' + m.role + '</div>' : '') + '</div>';
     }).join('');
+    document.getElementById('detail-group-posts').innerHTML = d.posts.map(function(r) {
+      return '<div class="reply-item"><div class="reply-avatar av-' + r.a + '">' + r.a + '</div><div class="reply-body"><div class="reply-meta">' + r.u + ' · ' + r.t + '</div><div class="reply-text">' + r.msg + '</div></div></div>';
+    }).join('');
+    var eventsContainer = document.getElementById('detail-group-events');
+    eventsContainer.innerHTML = '';
+    d.events.forEach(function(e) {
+      var el = document.createElement('div');
+      el.className = 'post-card';
+      el.style.cursor = 'pointer';
+      var evtData = eventItems[e.idx]; el.innerHTML = '<div class="post-avatar" style="background:var(--black);">' + e.date + '</div><div class="post-body"><div class="post-meta">' + e.month + '</div><div class="post-title">' + e.title + '</div></div><div class="post-right"><div class="post-replies">' + (evtData ? evtData.attendees.length : e.going) + ' going</div></div>';
+      el.onclick = (function(idx){ return function(){ closeDetail('detail-group'); openEventDetail(idx); }; })(e.idx);
+      eventsContainer.appendChild(el);
+    });
     document.getElementById('detail-group').style.display = 'block';
+    document.querySelectorAll('.detail-tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.detail-tab')[0].classList.add('active');
+    document.getElementById('tab-members').classList.add('active');
     window.scrollTo(0,0);
+  }
+  function submitGroupPost() {
+    var input = document.getElementById('groupPostInput');
+    var text = input.value.trim();
+    if (!text) return;
+    var posts = document.getElementById('detail-group-posts');
+    posts.innerHTML = '<div class="reply-item"><div class="reply-avatar">ME</div><div class="reply-body"><div class="reply-meta">Your unit · just now</div><div class="reply-text">' + text + '</div></div></div>' + posts.innerHTML;
+    input.value = '';
+  }
+  function toggleGroupJoinCard(btn) {
+    if (btn.textContent === 'Join →') {
+      btn.textContent = 'Joined ✓';
+      btn.style.background = 'rgba(255,255,255,0.3)';
+    } else {
+      btn.textContent = 'Join →';
+      btn.style.background = '';
+    }
+  }
+  function showLogin2() {
+    document.getElementById('loginModal').style.display = 'flex';
+  }
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
   }
 
   function openPost(id) {
@@ -566,7 +757,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     document.getElementById('detail-post-title').textContent = d.title;
     document.getElementById('detail-post-meta').textContent = d.meta;
     document.getElementById('detail-post-replies').innerHTML = d.replies.map(function(r) {
-      return '<div class="reply-item"><div class="reply-avatar">' + r.a + '</div><div class="reply-body"><div class="reply-meta">' + r.u + ' · ' + r.t + '</div><div class="reply-text">' + r.msg + '</div></div></div>';
+      return '<div class="reply-item"><div class="reply-avatar av-' + r.a + '">' + r.a + '</div><div class="reply-body"><div class="reply-meta">' + r.u + ' · ' + r.t + '</div><div class="reply-text">' + r.msg + '</div></div></div>';
     }).join('');
     document.getElementById('detail-post').style.display = 'block';
     window.scrollTo(0,0);
@@ -624,10 +815,47 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(
     replies.lastElementChild.scrollIntoView({behavior:'smooth'});
   }
 
+
+  var currentGalleryImgs = [];
+  var currentGalleryIdx = 0;
+
+  function initGallery(imgs) {
+    currentGalleryImgs = imgs || [];
+    currentGalleryIdx = 0;
+    var dots = document.getElementById('gallery-dots');
+    dots.innerHTML = '';
+    if (imgs && imgs.length > 1) {
+      imgs.forEach(function(_, i) {
+        var d = document.createElement('button');
+        d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        d.onclick = function() { setGalleryImg(i); };
+        dots.appendChild(d);
+      });
+    }
+  }
+
+  function setGalleryImg(idx) {
+    if (!currentGalleryImgs.length) return;
+    currentGalleryIdx = (idx + currentGalleryImgs.length) % currentGalleryImgs.length;
+    document.getElementById('detail-market-img').src = currentGalleryImgs[currentGalleryIdx];
+    document.querySelectorAll('.gallery-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === currentGalleryIdx);
+    });
+  }
+
+  function galleryNav(dir) {
+    setGalleryImg(currentGalleryIdx + dir);
+  }
+
   function showDashboard() {
     document.getElementById('loginPage').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     document.getElementById('navActions').style.display = 'none';
+    // Dynamic counts
+    var listingEl = document.getElementById('stat-listings');
+    var groupEl = document.getElementById('stat-groups');
+    if (listingEl) listingEl.textContent = marketItems.length;
+    if (groupEl) groupEl.textContent = groupItems.length;
     window.scrollTo(0, 0);
   }
   function showLogin() {
